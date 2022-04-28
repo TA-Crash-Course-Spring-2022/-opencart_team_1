@@ -1,4 +1,3 @@
-
 package Driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -11,6 +10,7 @@ public class Driver {
     private static WebDriver driver;
 
     public static void setupWebDriver() {
+
         WebDriverManager.chromedriver().setup();
     }
 
@@ -18,18 +18,20 @@ public class Driver {
         driver = new ChromeDriver();
         DRIVERS.set(driver);
     }
+
     public static void setPage(String url) {
         driver.get(url);
         DRIVERS.set(driver);
     }
 
     public static void closeWindow() {
+
         driver.close();
     }
-    public static void quitOfBrowser(){
+
+    public static void quitOfBrowser() {
         driver.quit();
     }
-
 
 
 }
