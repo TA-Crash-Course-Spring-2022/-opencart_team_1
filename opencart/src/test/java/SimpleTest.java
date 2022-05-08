@@ -1,11 +1,19 @@
 import driver.Driver;
+import enums.Url;
 import navigation.Navigation;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+import pages.ShoppingCart;
+import steps.ShoppingCartBL;
 
 
 public class SimpleTest extends BaseTest{
-    @Test
-    public void TryTest() {
-        Driver.waitForcibly();
+    private Navigation navigate;
+    @Test(description = "check shopping cart access")
+    public void TryTest() throws InterruptedException {
+        Driver.driverGet(Url.SHOPPING_CART_URL.getUrlValue());
+    Thread.sleep(10000);
+
     }
+
 }
