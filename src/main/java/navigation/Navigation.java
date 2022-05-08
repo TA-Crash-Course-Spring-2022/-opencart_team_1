@@ -16,4 +16,4 @@ public class Navigation {
         driver.manage().window().maximize();
     }
 
-}
+} 
