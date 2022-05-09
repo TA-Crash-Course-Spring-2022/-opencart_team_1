@@ -1,21 +1,19 @@
 package steps;
 
-import navigation.enums.Pages.SearchPage;
 import org.openqa.selenium.WebElement;
-
+import pages.SearchPage;
 
 public class SearchPageBL {
 
-    private final SearchPage searchPage;
+    private SearchPage searchPage = new SearchPage();
 
     public SearchPageBL() {
-        searchPage = new SearchPage();
     }
 
     public SearchPageBL setSearchCategory(String category) {
         searchPage.getSearchFormButton().click();
         for (WebElement target : searchPage.getSearchInCategories()) {
-            if(target != null & target.getText().equalsIgnoreCase(category)){
+            if (target != null & target.getText().equalsIgnoreCase(category)) {
                 target.click();
                 break;
             }
@@ -23,12 +21,12 @@ public class SearchPageBL {
         return this;
     }
 
-    public SearchPageBL searchInDescription(){
+    public SearchPageBL searchInDescription() {
         searchPage.getSearchInDesc().click();
         return this;
     }
 
-    public SearchPageBL searchInSubcategories(){
+    public SearchPageBL searchInSubcategories() {
         searchPage.getSearchInSubCategories().click();
         return this;
     }
