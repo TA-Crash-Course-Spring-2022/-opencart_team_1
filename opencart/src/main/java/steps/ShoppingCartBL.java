@@ -1,6 +1,5 @@
 package steps;
 
-import driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -10,7 +9,7 @@ public class ShoppingCartBL {
     private ShoppingCart shoppingCartBL;
 
     public ShoppingCartBL(WebDriver driver) {
-        shoppingCartBL = new ShoppingCart(driver);
+        shoppingCartBL = new ShoppingCart();
     }
 
     // Shopping cart
@@ -84,17 +83,20 @@ public class ShoppingCartBL {
         getQuotesButton.click();
         return this;
     }
+
     public ShoppingCartBL dropUseGiftCertificateButton() {
         WebElement useGiftCertificateButton = shoppingCartBL.getUseGiftCertificateDropButton();
         useGiftCertificateButton.click();
         return this;
     }
+
     public ShoppingCartBL fillGiftCertificateInput(String certificateCode) {
         WebElement giftCertificateInput = shoppingCartBL.getInputCoupon();
         giftCertificateInput.clear();
         giftCertificateInput.sendKeys(certificateCode);
         return this;
     }
+
     public ShoppingCartBL clickApplyGiftCertificateButton() {
         WebElement applyGiftCertificateButton = shoppingCartBL.getGiftCertificationInput();
         applyGiftCertificateButton.click();
