@@ -1,17 +1,11 @@
 package pages;
 
-import driver.Driver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class ShoppingCart extends BasePage {
-    public ShoppingCart(WebDriver driver) {
-        super(driver);
-    }
     @FindBy(xpath = "/html/body/div[2]/div/div/h1")
     private WebElement ShoppingCartHeaderText;
 
@@ -87,12 +81,6 @@ public class ShoppingCart extends BasePage {
     @FindBy(xpath = "//a[text()= 'Continue Shopping']")
     private WebElement continueShoppingButton;
 
-//    public ShoppingCart(WebDriver driver) {
-//        super(driver);
-//    }
-//public ShoppingCart() {
-//    super(driver);
-//}
 
     public WebElement getProductImage(short id) {
         return productImage.get(id);
@@ -189,4 +177,5 @@ public class ShoppingCart extends BasePage {
     public WebElement getContinueShoppingButton() {
         return continueShoppingButton;
     }
+
 }

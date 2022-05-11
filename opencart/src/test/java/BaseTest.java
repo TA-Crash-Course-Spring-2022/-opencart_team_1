@@ -9,16 +9,17 @@ import org.testng.annotations.Test;
 public class BaseTest {
 
     @BeforeSuite
-    public void setup(){
+    public void setup() {
         Driver.downloadWebDriver();
     }
 
     @BeforeClass
-    public void createDriver(){
+    public void createDriver() {
         Driver.instanceWebBrowser();
     }
+
     @AfterSuite
-    public void closeBrowser(){
+    public void closeBrowser() {
         Driver.closeBrowser();
     }
 }
