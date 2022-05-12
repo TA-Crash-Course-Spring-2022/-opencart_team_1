@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ShoppingCart extends BasePage {
+public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/div/div/h1")
     private WebElement ShoppingCartHeaderText;
 
