@@ -19,5 +19,4 @@ public class AdminLoginPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     private WebElement loginButton;
 
-
 }

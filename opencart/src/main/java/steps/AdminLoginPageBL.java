@@ -1,9 +1,7 @@
 package steps;
 
 import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.WebElement;
 import pages.AdminLoginPage;
-import pages.MyAccountPage;
 
 public class AdminLoginPageBL {
     private AdminLoginPage adminLoginPageBL;

@@ -1,6 +1,5 @@
 package steps;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.ShoppingCartPage;
@@ -12,7 +11,6 @@ public class ShoppingCartBL {
         shoppingCartPageBL = new ShoppingCartPage();
     }
 
-    // Shopping cart
     public ShoppingCartBL enterQuantityValue(short id, String value) {
         WebElement inputQuantityValue = shoppingCartPageBL.getQuantityInputForm(id);
         inputQuantityValue.clear();
@@ -31,8 +29,6 @@ public class ShoppingCartBL {
         quantityRemoveButton.click();
         return this;
     }
-
-    //Coupon and Taxes part
 
     public ShoppingCartBL dropUseCouponCodeButton() {
         WebElement useCouponCodeButton = shoppingCartPageBL.getUseCouponDropButton();
@@ -102,9 +98,6 @@ public class ShoppingCartBL {
         applyGiftCertificateButton.click();
         return this;
     }
-
-
-    // Bottom page //
 
     public ShoppingCartBL clickContinueShoppingButton() {
         WebElement continueShoppingButton = shoppingCartPageBL.getContinueShoppingButton();
