@@ -19,7 +19,7 @@ public class RegisterModel {
         return new RegisterModel().new Builder();
     }
 
-    public class Builder {
+    private class Builder {
         public RegisterModel.Builder firstName(String value) {
             firstName = value;
             return this;

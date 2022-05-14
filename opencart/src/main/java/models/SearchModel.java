@@ -9,7 +9,7 @@ public class SearchModel {
         return new SearchModel().new Builder();
     }
 
-    public class Builder {
+    private class Builder {
         public SearchModel.Builder inputSearch(String value) {
             return this;
         }
