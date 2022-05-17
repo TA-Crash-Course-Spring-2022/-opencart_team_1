@@ -71,7 +71,6 @@ public class RegisterPageBL {
 
     public RegisterPageBL clickOnSuccessfulRegistrationContinueButton() {
         successfulRegisterPage.getSuccessfulRegistrationContinueButton().click();
-        myAccountPage = new MyAccountPage();
         return this;
     }
 

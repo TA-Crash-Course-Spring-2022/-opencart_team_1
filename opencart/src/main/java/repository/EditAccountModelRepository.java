@@ -31,7 +31,7 @@ public class EditAccountModelRepository {
 
     public static EditAccountModel getEmailEdit() {
         return EditAccountModel.builder()
-                .setEmail(RandomStringUtils.randomAlphabetic(8) + "gmail.com")
+                .setEmail(RandomStringUtils.randomAlphabetic(8) + "@gmail.com")
                 .build();
     }
 
