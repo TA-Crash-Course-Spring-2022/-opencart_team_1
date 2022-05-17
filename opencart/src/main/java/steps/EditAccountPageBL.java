@@ -20,30 +20,35 @@ public class EditAccountPageBL {
         editEmail(editAccountModel.getEmail());
         editTelephone(editAccountModel.getTelephone());
         clickOnEditContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
     public EditAccountPageBL editFirstNameOnly(EditAccountModel editAccountModel) {
         editFirstName(editAccountModel.getFirstName());
         clickOnEditContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
     public EditAccountPageBL editLastNameOnly(EditAccountModel editAccountModel) {
         editLastName(editAccountModel.getLastName());
         clickOnEditContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
     public EditAccountPageBL editEmailOnly(EditAccountModel editAccountModel) {
         editEmail(editAccountModel.getEmail());
         clickOnEditContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
     public EditAccountPageBL editTelephoneOnly(EditAccountModel editAccountModel) {
         editTelephone(editAccountModel.getTelephone());
         clickOnEditContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
