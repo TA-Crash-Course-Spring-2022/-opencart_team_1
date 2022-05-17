@@ -19,5 +19,4 @@ public class MyAccountPageBL {
         myAccountPage.getChangeYourPassword().click();
         return new MyAccountPageBL();
     }
-
 }
