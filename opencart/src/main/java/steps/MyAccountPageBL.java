@@ -20,4 +20,8 @@ public class MyAccountPageBL {
         return new MyAccountPageBL();
     }
 
+    public MyAccountPageBL clickOnLogoutButton() {
+        myAccountPage.getLogout().click();
+        return new MyAccountPageBL();
+    }
 }

@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 @Getter
 public class MyAccountPage extends BasePage {
 
+    @FindBy(xpath = ".//h2[text()= 'My Account']")
+    private WebElement textMyAccount;
+
     @FindBy(xpath = ".//*[text()= 'Edit your account information']")
     private WebElement editYourAccountInformation;
 
@@ -43,4 +46,13 @@ public class MyAccountPage extends BasePage {
 
     @FindBy(xpath = ".//*[text()= 'Subscribe / unsubscribe to newsletter']")
     private WebElement newsletter;
+
+    @FindBy(xpath = ".//a[13][text() = 'Logout']")
+    private WebElement logout;
+
+    @FindBy(xpath = ".//*[@class= 'alert alert-success alert-dismissible']")
+    private WebElement successfulEditAccountMessage;
+
+    @FindBy(xpath = ".//*[@class= 'alert alert-success alert-dismissible']")
+    private WebElement successfulChangePasswordMessage;
 }
