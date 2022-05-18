@@ -17,6 +17,7 @@ public class ChangePasswordPageBL {
         inputPassword(changePasswordModel.getPassword());
         inputPasswordConfirm(changePasswordModel.getConfirmPassword());
         clickOnChangePasswordContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
@@ -40,7 +41,7 @@ public class ChangePasswordPageBL {
         return this;
     }
 
-    public ChangePasswordPageBL checkInvalidChangePassword() {
+    public ChangePasswordPageBL checkNegativeChangePassword() {
         String expectedMessage = "Error!";
         Assert.assertEquals(myAccountPage.getSuccessfulEditAccountMessage().getText(), expectedMessage, "Success: Your password has been successfully updated.");
         return this;

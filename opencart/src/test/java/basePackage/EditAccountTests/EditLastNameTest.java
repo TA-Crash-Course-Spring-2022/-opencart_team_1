@@ -15,7 +15,7 @@ import static enums.Url.BASIC_URL;
 public class EditLastNameTest extends BaseTest {
 
     @Test
-    public void changeLastNameTest() {
+    public void changeLastName() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         MainPageBL mainPageBL = new MainPageBL();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
