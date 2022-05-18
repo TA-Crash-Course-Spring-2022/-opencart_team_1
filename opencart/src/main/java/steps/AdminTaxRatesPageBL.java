@@ -54,12 +54,12 @@ public class AdminTaxRatesPageBL {
         return this;
     }
 
-    public AdminTaxRatesPageBL deleteTaxClick() {
+    public AdminTaxRatesPageBL clickDeleteTax() {
         adminTaxRatesPage.getDeleteButton().click();
         return this;
     }
 
-    public AdminTaxRatesPageBL editTaxClick(int id) {
+    public AdminTaxRatesPageBL clickEditTax(int id) {
         adminTaxRatesPage.getTaxes().get(id).getEditButton().click();
         return this;
     }
