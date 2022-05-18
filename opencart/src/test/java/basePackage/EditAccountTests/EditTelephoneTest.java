@@ -15,7 +15,7 @@ import static enums.Url.BASIC_URL;
 public class EditTelephoneTest extends BaseTest {
 
     @Test
-    public void changeTelephoneTest() {
+    public void changeTelephone() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         MainPageBL mainPageBL = new MainPageBL();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()

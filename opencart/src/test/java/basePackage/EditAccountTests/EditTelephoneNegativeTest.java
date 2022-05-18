@@ -12,11 +12,11 @@ import steps.MyAccountPageBL;
 
 import static enums.Url.BASIC_URL;
 
-public class EditTelephoneInvalidTest extends BaseTest {
+public class EditTelephoneNegativeTest extends BaseTest {
 
     @Test
 
-    public void changeTelephoneInvalidTest() {
+    public void changeTelephoneNegative() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         MainPageBL mainPageBL = new MainPageBL();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
