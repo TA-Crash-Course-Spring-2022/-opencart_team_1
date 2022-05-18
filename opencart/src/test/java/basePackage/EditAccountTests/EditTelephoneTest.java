@@ -20,8 +20,8 @@ public class EditTelephoneTest extends BaseTest {
         MainPageBL mainPageBL = new MainPageBL();
         LoginPageBL loginPageBL = mainPageBL.getHeaderPageBL()
                 .clickOnMyAccountButton()
-                .clickOnLoginButton();
-        loginPageBL.loginPerson(LoginModelRepository.getLoginUser());
+                .clickOnLoginButton()
+                .loginPerson(LoginModelRepository.getLoginUser());
         MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         EditAccountPageBL editAccountBL = new EditAccountPageBL()
