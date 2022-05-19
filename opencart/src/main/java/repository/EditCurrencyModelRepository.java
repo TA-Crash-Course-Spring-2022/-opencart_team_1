@@ -4,9 +4,6 @@ import models.EditCurrencyModel;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.random.RandomGenerator;
-
-import static java.lang.Math.random;
 
 public class EditCurrencyModelRepository {
 

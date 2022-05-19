@@ -1,6 +1,7 @@
 package steps;
 
 import models.LoginModel;
+import models.RegisterModel;
 import org.testng.Assert;
 import pages.LoginPage;
 import pages.MyAccountPage;
@@ -18,6 +19,15 @@ public class LoginPageBL {
         inputEmail(loginModel.getEmail());
         inputPassword(loginModel.getPassword());
         clickOnLoginContinueButton();
+        myAccountPage = new MyAccountPage();
+        return this;
+    }
+
+    public LoginPageBL loginPersonUponRegistration(RegisterModel registerModel) {
+        inputEmail(registerModel.getEmail());
+        inputPassword(registerModel.getPassword());
+        clickOnLoginContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
