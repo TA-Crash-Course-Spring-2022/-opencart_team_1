@@ -1,114 +1,87 @@
 package steps;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import pages.ShoppingCartPage;
+import enums.ShoppingCartBasicValues;
+import pages.BasePage;
+import pages.CheckoutPage;
+import pages.ShoppingCart;
+import pages.SuccessfulOrderPage;
 
-public class ShoppingCartBL {
-    private ShoppingCartPage shoppingCartPageBL;
+public class ShoppingCartBL extends BasePage {
+    private ShoppingCart shoppingCart;
 
     public ShoppingCartBL() {
-        shoppingCartPageBL = new ShoppingCartPage();
+        shoppingCart = new ShoppingCart();
     }
 
-    public ShoppingCartBL enterQuantityValue(short id, String value) {
-        WebElement inputQuantityValue = shoppingCartPageBL.getQuantityInputForm(id);
-        inputQuantityValue.clear();
-        inputQuantityValue.sendKeys(value);
+    public ShoppingCartBL clickProductName(short id) {
+        shoppingCart.getProducts().get(id).getProductName().click();
+        return this;
+    }
+    public ShoppingCartBL fillQuantityInput(int id, int quantity) {
+        try{
+            String quantityString = String.valueOf(quantity);
+            shoppingCart.getProducts().get(id).getProductName().sendKeys(quantityString);
+        }
+        catch (IllegalArgumentException quantityException){
+            String quantityString = String.valueOf(ShoppingCartBasicValues.QUANTITY_BASIC);
+            shoppingCart.getProducts().get(id).getProductName().sendKeys(quantityString);
+        }
         return this;
     }
 
-    public ShoppingCartBL clickQuantityRefreshButton(short id) {
-        WebElement quantityRefreshButton = shoppingCartPageBL.getQuantityRefreshButton(id);
-        quantityRefreshButton.click();
+    public ShoppingCartBL clickRefreshButton(short id){
+        shoppingCart.getProducts().get(id).getProductQuantityRefreshButton().click();
+        return this;
+    }
+    public ShoppingCartBL clickRemoveButton(short id){
+        shoppingCart.getProducts().get(id).getProductQuantityRemoveButton().click();
+        return this;
+    }
+    public ShoppingCartBL dropUseCouponButton(){
+        shoppingCart.getUseCouponCodeDropButton().click();
         return this;
     }
 
-    public ShoppingCartBL clickQuantityRemoveButton(short id) {
-        WebElement quantityRemoveButton = shoppingCartPageBL.getQuantityRemoveButton(id);
-        quantityRemoveButton.click();
+    public ShoppingCartBL fillCouponInput(String couponCode){
+        shoppingCart.getCouponInput().sendKeys(couponCode);
         return this;
     }
 
-    public ShoppingCartBL dropUseCouponCodeButton() {
-        WebElement useCouponCodeButton = shoppingCartPageBL.getUseCouponDropButton();
-        useCouponCodeButton.click();
+    public ShoppingCartBL clickApplyCouponButton(){
+        shoppingCart.getApplyCouponButton().click();
+        return this;
+    }
+    public ShoppingCartBL dropEstimateShippingAndTaxesButton(){
+        shoppingCart.getEstimateShippingAndTaxesDropButton().click();
+        return this;
+    }
+    public ShoppingCartBL chooseCountry(String country){
+        shoppingCart.getCountrySelect().selectByValue(country);
+        return this;
+    }
+    public ShoppingCartBL chooseRegionAndState(String country){
+        shoppingCart.getRegionAndStateSelect().selectByValue(country);
+        return this;
+    }
+    public ShoppingCartBL fillPostCodeInput(String postCode){
+        shoppingCart.getPostCodeInput().sendKeys(postCode);
+        return this;
+    }
+    public ShoppingCartBL clickGetQuotesButton(){
+        shoppingCart.getGetQuotesButton().click();
         return this;
     }
 
-    public ShoppingCartBL fillCouponInput(String couponCode) {
-        WebElement couponInput = shoppingCartPageBL.getInputCoupon();
-        couponInput.clear();
-        couponInput.sendKeys(couponCode);
+    public ShoppingCartBL dropUseGiftCertificateDropButton(){
+        shoppingCart.getUseGiftCertificateDropButton().click();
         return this;
     }
-
-    public ShoppingCartBL clickApplyCouponButton() {
-        WebElement applyCouponButton = shoppingCartPageBL.getApplyCouponButton();
-        applyCouponButton.click();
+    public ShoppingCartBL clickCheckoutButton(){
+        shoppingCart.getCheckoutButton().click();
         return this;
     }
-
-    public ShoppingCartBL dropEstimateShippingAndTaxesButton() {
-        WebElement estimateShippingAndTaxesDropButton = shoppingCartPageBL.getEstimateShippingAndTaxesDropButton();
-        estimateShippingAndTaxesDropButton.click();
+    public ShoppingCartBL clickContinueShopping(){
+        shoppingCart.getContinueShoppingButton().click();
         return this;
     }
-
-    public ShoppingCartBL chooseCountry(String countryValue) {
-        Select country = new Select(shoppingCartPageBL.getCountrySelect());
-        country.selectByValue(countryValue);
-        return this;
-    }
-
-    public ShoppingCartBL chooseRegionAndState(String regionAndStateZoneId) {
-        Select regionAndStateSelect = new Select(shoppingCartPageBL.getRegionAndStateSelect());
-        regionAndStateSelect.selectByValue(regionAndStateZoneId);
-        return this;
-    }
-
-    public ShoppingCartBL fillPostCodeInput() {
-        WebElement postCodeInput = shoppingCartPageBL.getPostCodeInput();
-        postCodeInput.clear();
-        postCodeInput.sendKeys();
-        return this;
-    }
-
-    public ShoppingCartBL clickGetQuotesButton() {
-        WebElement getQuotesButton = shoppingCartPageBL.getGetQuotesButton();
-        getQuotesButton.click();
-        return this;
-    }
-
-    public ShoppingCartBL dropUseGiftCertificateButton() {
-        WebElement useGiftCertificateButton = shoppingCartPageBL.getUseGiftCertificateDropButton();
-        useGiftCertificateButton.click();
-        return this;
-    }
-
-    public ShoppingCartBL fillGiftCertificateInput(String certificateCode) {
-        WebElement giftCertificateInput = shoppingCartPageBL.getInputCoupon();
-        giftCertificateInput.clear();
-        giftCertificateInput.sendKeys(certificateCode);
-        return this;
-    }
-
-    public ShoppingCartBL clickApplyGiftCertificateButton() {
-        WebElement applyGiftCertificateButton = shoppingCartPageBL.getGiftCertificationInput();
-        applyGiftCertificateButton.click();
-        return this;
-    }
-
-    public ShoppingCartBL clickContinueShoppingButton() {
-        WebElement continueShoppingButton = shoppingCartPageBL.getContinueShoppingButton();
-        continueShoppingButton.click();
-        return this;
-    }
-
-    public ShoppingCartBL clickCheckoutButton() {
-        WebElement checkoutButton = shoppingCartPageBL.getCheckoutButton();
-        checkoutButton.click();
-        return this;
-    }
-
 }
