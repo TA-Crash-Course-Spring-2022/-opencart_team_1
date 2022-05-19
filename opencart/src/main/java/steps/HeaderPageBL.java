@@ -24,4 +24,14 @@ public class HeaderPageBL {
         headerPage.getLoginButton().click();
         return new LoginPageBL();
     }
+
+    public ShoppingCartBL clickOnShoppingCartButton() {
+        headerPage.getShoppingCartButton().click();
+        return new ShoppingCartBL();
+    }
+
+    public CheckoutPageBL clickOnCheckoutButton() {
+        headerPage.getCheckoutButton().click();
+        return new CheckoutPageBL();
+    }
 }

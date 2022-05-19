@@ -15,4 +15,13 @@ public class HeaderPage extends BasePage {
 
     @FindBy(xpath = ".//*[text()= 'Login']")
     private WebElement loginButton;
+
+    @FindBy(id = "wishlist-total")
+    private WebElement wishListButton;
+
+    @FindBy(xpath = ".//*[@title= 'Shopping Cart']")
+    private WebElement shoppingCartButton;
+
+    @FindBy(xpath = ".//*[@title= 'Checkout']")
+    private WebElement checkoutButton;
 }
