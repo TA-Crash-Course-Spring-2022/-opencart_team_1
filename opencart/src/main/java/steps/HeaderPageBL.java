@@ -48,6 +48,12 @@ public class HeaderPageBL {
         headerPage.getCurrencySymbolOnHomePage().getText();
         return this;
     }
+    public String findCurrencyByName(){
+        return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
+    }
+    public String findCurrencyByCode(){
+        return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
+    }
     public void verifyCurrencyWasChanged(short id){
 
         Assert.assertEquals(headerPage.getCurrencySymbolOnHomePage().getText(), String.valueOf(headerPage.getCurrencyDropDownUl().get(id).getText().charAt(0)));

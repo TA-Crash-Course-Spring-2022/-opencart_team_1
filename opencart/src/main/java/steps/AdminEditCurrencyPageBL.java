@@ -1,69 +1,69 @@
 package steps;
 
+import driver.Driver;
 import models.EditCurrencyModel;
+import org.openqa.selenium.support.ui.Select;
+import pages.AdminCurrencyPage;
 import pages.AdminEditCurrencyPage;
 import repository.EditCurrencyModelRepository;
+import utils.DriverUtils;
 
 
 public class AdminEditCurrencyPageBL {
 
-    private AdminEditCurrencyPage adminEditCurrencyPageBL;
     private AdminEditCurrencyPage adminEditCurrencyPage;
 
+    private String currencyNewTitle;
     public AdminEditCurrencyPageBL() {
-        adminEditCurrencyPageBL = new AdminEditCurrencyPage();
+        adminEditCurrencyPage = new AdminEditCurrencyPage();
     }
 
-    public AdminEditCurrencyPageBL editCurrency(EditCurrencyModel editCurrencyModel){
-        fillCurrencyTitleInput(editCurrencyModel.getCurrencyTitle());
+    public AdminEditCurrencyPageBL editCurrency(EditCurrencyModel editCurrencyModel) throws InterruptedException {
+        fillCurrencyTitleInput(String.valueOf(editCurrencyModel.getCurrencyTitle()));
         fillCurrencyCodeInput(editCurrencyModel.getCurrencyCode());
         fillCurrencySymbolLeftInput(editCurrencyModel.getSymbolLeft());
         fillCurrencySymbolRightInput(editCurrencyModel.getSymbolRight());
         fillCurrencyDecimalPlacesInput(editCurrencyModel.getDecimalPlaces());
         fillCurrencyValueInput(editCurrencyModel.getCurrencyValue());
-        selectCurrencyStatus(editCurrencyModel.isCurrencyStatus());
-        clickSaveCurrencyButton();
         return this;
     }
-
     private void fillCurrencyTitleInput(String title) {
         adminEditCurrencyPage.getCurrencyTitleInput().clear();
         adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(title);
     }
     private void fillCurrencyCodeInput(String code) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(code);
+        adminEditCurrencyPage.getCodeInput().clear();
+        adminEditCurrencyPage.getCodeInput().sendKeys(code);
     }
 
     private void fillCurrencySymbolLeftInput(String beforeSymbol) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(beforeSymbol);
+        adminEditCurrencyPage.getSymbolLeftInput().clear();
+        adminEditCurrencyPage.getSymbolLeftInput().sendKeys(beforeSymbol);
     }
 
     private void fillCurrencySymbolRightInput(String afterSymbol) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(afterSymbol);
+        adminEditCurrencyPage.getSymbolRightInput().clear();
+        adminEditCurrencyPage.getSymbolRightInput().sendKeys(afterSymbol);
     }
 
     private void fillCurrencyDecimalPlacesInput(String decimalPlaces) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(decimalPlaces);
+        adminEditCurrencyPage.getDecimalPlacesInput().clear();
+        adminEditCurrencyPage.getDecimalPlacesInput().sendKeys(decimalPlaces);
     }
 
     private void fillCurrencyValueInput(String currencyValue) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(currencyValue);
+        adminEditCurrencyPage.getValueInput().clear();
+        adminEditCurrencyPage.getValueInput().sendKeys(currencyValue);
     }
-
-    private void selectCurrencyStatus(boolean currencyStatus) {
-        adminEditCurrencyPage.getCurrencyTitleInput().clear();
-        adminEditCurrencyPage.getStatusSelect().selectByValue(String.valueOf(currencyStatus));
+    public AdminEditCurrencyPageBL selectCurrencyStatus() throws InterruptedException {
+       // adminEditCurrencyPage.getStatusSelectButton().click();
+        Select select = new Select(adminEditCurrencyPage.getStatusSelect());
+        select.selectByValue("1");
+        return this;
     }
-    private void clickSaveCurrencyButton(){
+    public AdminCurrencyPage clickSaveCurrency(){
+        currencyNewTitle = adminEditCurrencyPage.getCurrencyTitleInput().getText();
         adminEditCurrencyPage.getSaveEditCurrencyButton().click();
-    }
-
-    private void clickCancelCurrencyButton(){
-        adminEditCurrencyPage.getCancelEditCurrencyButton().click();
+        return new AdminCurrencyPage();
     }
 }

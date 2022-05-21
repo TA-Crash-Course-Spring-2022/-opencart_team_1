@@ -30,7 +30,7 @@ public class HeaderPage extends BasePage {
     @FindBy(xpath = ".//*[span = 'Currency']")
     private WebElement changeCurrencyButton;
 
-    @FindBy(xpath = "//ul[@class = 'dropdown-menu']/li")
+    @FindBy(xpath = "//ul[@class = 'dropdown-menu']/li/button")
     private List<WebElement> currencyDropDownUl;
 
     @FindBy(xpath = "//button[@class='btn btn-link dropdown-toggle']/strong")

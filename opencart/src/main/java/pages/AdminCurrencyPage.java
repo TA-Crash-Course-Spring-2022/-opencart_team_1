@@ -34,8 +34,12 @@ public class AdminCurrencyPage extends BasePage{
     @FindBy(xpath = "//thead//td[5]/a")
     private WebElement sortByLastUpdatedButton;
 
-    @FindBy(xpath = "//tbody")
+    @FindBy(xpath = "//tbody/tr")
     private List<WebElement> currencies;
+
+    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    private WebElement succesfulModifiedCurrency;
+
 
     public List<CurrencyContainer> getCurrencies() {
         return currencies.stream().map(CurrencyContainer::new).collect(Collectors.toList());

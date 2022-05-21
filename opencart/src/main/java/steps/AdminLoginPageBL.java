@@ -10,6 +10,11 @@ public class AdminLoginPageBL {
         adminLoginPageBL = new AdminLoginPage();
     }
 
+    public AdminLoginPageBL loginAdmin(){
+        fillUserNameInput("admin");
+        fillPasswordInput("neadmin");
+        return this;
+    }
     public AdminLoginPageBL fillUserNameInput(String userName) {
         try {
             adminLoginPageBL.getUserNameInput().clear();
