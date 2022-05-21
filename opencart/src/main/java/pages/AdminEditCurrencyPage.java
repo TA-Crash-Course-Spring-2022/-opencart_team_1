@@ -8,7 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 
 @Getter
 public class AdminEditCurrencyPage extends BasePage {
-    @FindBy(id = "input-title")
+   // @FindBy(id = "input-title")
+    @FindBy(xpath = "//*[@id='input-title']")
     private WebElement currencyTitleInput;
 
     @FindBy(id = "input-code")
@@ -26,18 +27,22 @@ public class AdminEditCurrencyPage extends BasePage {
     @FindBy(id = "input-decimal-place")
     private WebElement decimalPlacesInput;
 
-    @FindBy(id = "input-decimal-place")
+    @FindBy(id = "input-value")
     private WebElement valueInput;
 
     @FindBy(xpath = "//div[@class='form-group']//span")
     private WebElement valueSpanAdditionalInfo;
 
+    @FindBy(xpath = "//select")
+    private WebElement statusSelect;
+
     @FindBy(id = "input-status")
-    private Select statusSelect;
+    private WebElement statusSelectButton;
 
     @FindBy(xpath = "//div[@class='pull-right']/button")
     private WebElement saveEditCurrencyButton;
 
     @FindBy(xpath = "//div[@class='pull-right']/a")
     private WebElement cancelEditCurrencyButton;
+
 }

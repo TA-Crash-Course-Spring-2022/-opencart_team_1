@@ -33,6 +33,6 @@ public class CurrencyContainer extends BasePage {
     }
 
     public WebElement getEditCurrencyButton() {
-        return rootElement.findElement(By.xpath(".//td[6]"));
+        return rootElement.findElement(By.xpath(".//td[6]/a"));
     }
 }

@@ -12,7 +12,7 @@ public class EditCurrencyModel {
     private String symbolRight;
     private String decimalPlaces;
     private String currencyValue;
-    private boolean currencyStatus;
+    private String currencyStatus;
 
     private EditCurrencyModel() {
     }
@@ -53,10 +53,6 @@ public class EditCurrencyModel {
             return this;
         }
 
-        public EditCurrencyModel.Builder setStatus(boolean status){
-            currencyStatus = status;
-            return this;
-        }
         public EditCurrencyModel build() {
             return EditCurrencyModel.this;
         }
