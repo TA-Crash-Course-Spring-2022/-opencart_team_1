@@ -1,6 +1,12 @@
 package steps;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import navigation.Navigation;
+import org.testng.Assert;
 import pages.AdminCurrencyPage;
+import pages.HeaderPage;
+
+import static enums.Url.BASIC_URL_NSTRAFER;
 
 public class AdminCurrencyPageBL {
 
@@ -72,7 +78,24 @@ public class AdminCurrencyPageBL {
         return this;
     }
     public AdminCurrencyPageBL clickEditCurrencyButton(short id){
-        adminCurrencyPageBL.getCurrencies().get(id).getEditCurrencyButton().click();
+        adminCurrencyPageBL.getSortByLastUpdatedButton().click();
+        adminCurrencyPageBL.getCurrencies().get(1).getEditCurrencyButton().click();
         return this;
+    }
+    public void verifySuccessfulModifiedOnAdminCurrencyPage(){
+        String successfulEditCurrency = "Success: You have modified currencies!";
+        Assert.assertTrue(adminCurrencyPageBL.getSuccesfulModifiedCurrency().getText().contains(successfulEditCurrency));
+    }
+    public void verifySuccessfulModifiedOnHomePage(){
+        String currencyCode = adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCodeText().getText();
+        String currencyCodeOnHomePage;
+        new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+        new HeaderPageBL().dropCurrencyDropButton();
+        Assert.assertEquals(new HeaderPageBL().findCurrencyByName(), currencyCode);
+
+
+    }
+    public String getCurrencyCode(){
+        return  adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCodeText().getText();
     }
 }

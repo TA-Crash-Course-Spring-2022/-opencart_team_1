@@ -18,6 +18,15 @@ public class LoginPageBL {
         inputEmail(userModel.getEmail());
         inputPassword(userModel.getPassword());
         clickOnLoginContinueButton();
+        myAccountPage = new MyAccountPage();
+        return this;
+    }
+
+    public LoginPageBL loginPersonUponRegistration(RegisterModel registerModel) {
+        inputEmail(registerModel.getEmail());
+        inputPassword(registerModel.getPassword());
+        clickOnLoginContinueButton();
+        myAccountPage = new MyAccountPage();
         return this;
     }
 
