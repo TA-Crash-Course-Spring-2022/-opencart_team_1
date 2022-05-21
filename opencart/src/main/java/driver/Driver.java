@@ -45,4 +45,14 @@ public class Driver {
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
          wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+    public static void switchToAlertAndAccept(){
+        WebDriverWait wait = new WebDriverWait(webDriver,10);
+        wait.until(ExpectedConditions.alertIsPresent());
+        webDriver.switchTo().alert().accept();
+    }
+    public static void switchToAlertAndCancel(){
+        WebDriverWait wait = new WebDriverWait(webDriver,10);
+        wait.until(ExpectedConditions.alertIsPresent());
+        webDriver.switchTo().alert().dismiss();
+    }
 }

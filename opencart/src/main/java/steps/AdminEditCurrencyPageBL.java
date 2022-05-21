@@ -27,6 +27,12 @@ public class AdminEditCurrencyPageBL {
         fillCurrencyValueInput(editCurrencyModel.getCurrencyValue());
         return this;
     }
+    public AdminEditCurrencyPageBL editAndSaveNewCurrency(){
+        editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
+        selectCurrencyStatus();
+        clickSaveCurrency();
+        return this;
+    }
     private void fillCurrencyTitleInput(String title) {
         adminEditCurrencyPage.getCurrencyTitleInput().clear();
         adminEditCurrencyPage.getCurrencyTitleInput().sendKeys(title);
@@ -55,8 +61,7 @@ public class AdminEditCurrencyPageBL {
         adminEditCurrencyPage.getValueInput().clear();
         adminEditCurrencyPage.getValueInput().sendKeys(currencyValue);
     }
-    public AdminEditCurrencyPageBL selectCurrencyStatus() throws InterruptedException {
-       // adminEditCurrencyPage.getStatusSelectButton().click();
+    public AdminEditCurrencyPageBL selectCurrencyStatus(){
         Select select = new Select(adminEditCurrencyPage.getStatusSelect());
         select.selectByValue("1");
         return this;

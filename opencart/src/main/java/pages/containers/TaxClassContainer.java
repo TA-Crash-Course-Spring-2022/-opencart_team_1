@@ -13,14 +13,14 @@ public class TaxClassContainer extends BasePage {
     }
 
     public WebElement getTaxClassCheckbox() {
-        return rootElement.findElement(By.xpath("//tbody//td[1]"));
+        return rootElement.findElement(By.xpath(".//td[1]"));
     }
 
     public WebElement getTaxClassTitle() {
-        return rootElement.findElement(By.xpath("//tbody//td[2]"));
+        return rootElement.findElement(By.xpath(".//td[2]"));
     }
 
     public WebElement getTaxClassEditButton() {
-        return rootElement.findElement(By.xpath("//tbody//td[3]/a"));
+        return rootElement.findElement(By.xpath(".//td[3]/a"));
     }
 }

@@ -19,6 +19,7 @@ public class AdminLoginPageBL {
     public AdminLoginPageBL loginAdmin(){
         fillUserNameInput(ADMIN_USERNAME.getAdminData());
         fillPasswordInput(ADMIN_PASSWORD.getAdminData());
+        clickLoginButton();
         return this;
     }
     public AdminLoginPageBL fillUserNameInput(String userName) {

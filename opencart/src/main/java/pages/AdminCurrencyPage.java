@@ -16,7 +16,7 @@ public class AdminCurrencyPage extends BasePage{
     @FindBy(xpath = "//div[@class='pull-right']/a[2]")
     private WebElement addCurrencyValueButton;
 
-    @FindBy(xpath = "//div[@class='pull-right']/a[3]")
+    @FindBy(xpath = "//div[@class='pull-right']/button")
     private WebElement deleteCurrencyValueButton;
 
     @FindBy(xpath = "//thead//td[1]/input")

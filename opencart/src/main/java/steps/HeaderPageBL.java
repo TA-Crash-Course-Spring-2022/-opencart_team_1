@@ -48,6 +48,23 @@ public class HeaderPageBL {
         headerPage.getCurrencySymbolOnHomePage().getText();
         return this;
     }
+    public boolean checkNewCurrency(String title){
+        boolean count = false;
+        for(int i= 0; i<headerPage.getCurrencies().size();i++){
+        if(headerPage.getCurrencyDropDownUl().get(i).getText().contains(title)){
+            count = true;
+        }
+        }
+        return count;
+    }
+    public boolean checkDeletedCurrency(String title){
+        for(int i= 0; i<headerPage.getCurrencies().size();i++){
+            if(headerPage.getCurrencyDropDownUl().get(i).getText().contains(title)){
+                return false;
+            }
+        }
+        return true;
+    }
     public String findCurrencyByName(){
         return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
     }
@@ -55,7 +72,6 @@ public class HeaderPageBL {
         return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
     }
     public void verifyCurrencyWasChanged(short id){
-
         Assert.assertEquals(headerPage.getCurrencySymbolOnHomePage().getText(), String.valueOf(headerPage.getCurrencyDropDownUl().get(id).getText().charAt(0)));
     }
 }
