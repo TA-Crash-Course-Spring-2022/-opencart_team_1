@@ -17,8 +17,6 @@ public class AdminAddCurrencyTest extends BaseTest {
     public void addAdminCurrencyTest() throws InterruptedException {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
-              //  .fillUserNameInput("admin")
-               // .fillPasswordInput("neadmin")
                 .loginAdmin()
                 .clickLoginButton();
         new AdminNavigationPageBL().dropSettingsButton()
@@ -31,13 +29,10 @@ public class AdminAddCurrencyTest extends BaseTest {
                 .clickSaveCurrency();
         new AdminCurrencyPageBL().verifySuccessfulModifiedOnAdminCurrencyPage();
         new AdminCurrencyPageBL().verifySuccessfulModifiedOnHomePage();
-        Thread.sleep(10000);
     }
     @Test
     public void editAdminCurrencyTest() throws InterruptedException {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
-//        new HeaderPageBL()
-//                .dropCurrencyDropButton();
         Thread.sleep(1000);
     }
 }

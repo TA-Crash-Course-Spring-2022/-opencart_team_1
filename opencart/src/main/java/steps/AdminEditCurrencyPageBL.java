@@ -18,7 +18,7 @@ public class AdminEditCurrencyPageBL {
         adminEditCurrencyPage = new AdminEditCurrencyPage();
     }
 
-    public AdminEditCurrencyPageBL editCurrency(EditCurrencyModel editCurrencyModel) throws InterruptedException {
+    public AdminEditCurrencyPageBL editCurrency(EditCurrencyModel editCurrencyModel){
         fillCurrencyTitleInput(String.valueOf(editCurrencyModel.getCurrencyTitle()));
         fillCurrencyCodeInput(editCurrencyModel.getCurrencyCode());
         fillCurrencySymbolLeftInput(editCurrencyModel.getSymbolLeft());
