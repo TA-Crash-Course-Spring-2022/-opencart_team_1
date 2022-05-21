@@ -1,15 +1,15 @@
 package repository;
 
-import models.EditAccountModel;
+import models.UserModel;
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class EditAccountModelRepository {
+public class EditAccountRepository {
 
-    private EditAccountModelRepository() {
+    private EditAccountRepository() {
     }
 
-    public static EditAccountModel getValidEditAccount() {
-        return EditAccountModel.builder()
+    public static UserModel getValidEditAccount() {
+        return UserModel.builder()
                 .setFirstName(RandomStringUtils.randomAlphabetic(8))
                 .setLastName(RandomStringUtils.randomAlphabetic(8))
                 .setEmail(RandomStringUtils.randomAlphabetic(8) + "@gmail.com")
@@ -17,32 +17,32 @@ public class EditAccountModelRepository {
                 .build();
     }
 
-    public static EditAccountModel getFirstNameEdit() {
-        return EditAccountModel.builder()
+    public static UserModel getFirstNameEdit() {
+        return UserModel.builder()
                 .setFirstName(RandomStringUtils.randomAlphabetic(8))
                 .build();
     }
 
-    public static EditAccountModel getLastNameEdit() {
-        return EditAccountModel.builder()
+    public static UserModel getLastNameEdit() {
+        return UserModel.builder()
                 .setLastName(RandomStringUtils.randomAlphabetic(8))
                 .build();
     }
 
-    public static EditAccountModel getEmailEdit() {
-        return EditAccountModel.builder()
+    public static UserModel getEmailEdit() {
+        return UserModel.builder()
                 .setEmail(RandomStringUtils.randomAlphabetic(8) + "@gmail.com")
                 .build();
     }
 
-    public static EditAccountModel getTelephoneEdit() {
-        return EditAccountModel.builder()
+    public static UserModel getTelephoneEdit() {
+        return UserModel.builder()
                 .setTelephone(RandomStringUtils.randomNumeric(10))
                 .build();
     }
 
-    public static EditAccountModel getInvalidTelephoneEdit() {
-        return EditAccountModel.builder()
+    public static UserModel getInvalidTelephoneEdit() {
+        return UserModel.builder()
                 .setTelephone(RandomStringUtils.randomAlphabetic(10))
                 .build();
     }

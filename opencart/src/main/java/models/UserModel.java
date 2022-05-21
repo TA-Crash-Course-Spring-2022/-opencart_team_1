@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class RegisterModel {
+public class UserModel {
 
     private String firstName;
     private String lastName;
@@ -14,47 +14,47 @@ public class RegisterModel {
     private String password;
     private String passwordConfirm;
 
-    private RegisterModel() {
+    private UserModel() {
     }
 
-    public static RegisterModel.Builder builder() {
-        return new RegisterModel().new Builder();
+    public static UserModel.Builder builder() {
+        return new UserModel().new Builder();
     }
 
     public class Builder {
 
-        public RegisterModel.Builder setFirstName(String value) {
+        public UserModel.Builder setFirstName(String value) {
             firstName = value;
             return this;
         }
 
-        public RegisterModel.Builder setLastName(String value) {
+        public UserModel.Builder setLastName(String value) {
             lastName = value;
             return this;
         }
 
-        public RegisterModel.Builder setEmail(String value) {
+        public UserModel.Builder setEmail(String value) {
             email = value;
             return this;
         }
 
-        public RegisterModel.Builder setTelephone(String value) {
+        public UserModel.Builder setTelephone(String value) {
             telephone = value;
             return this;
         }
 
-        public RegisterModel.Builder setPassword(String value) {
+        public UserModel.Builder setPassword(String value) {
             password = value;
             return this;
         }
 
-        public RegisterModel.Builder setPasswordConfirm(String value) {
+        public UserModel.Builder setPasswordConfirm(String value) {
             passwordConfirm = value;
             return this;
         }
 
-        public RegisterModel build() {
-            return RegisterModel.this;
+        public UserModel build() {
+            return UserModel.this;
         }
     }
 }

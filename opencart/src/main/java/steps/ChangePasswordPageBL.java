@@ -1,6 +1,6 @@
 package steps;
 
-import models.ChangePasswordModel;
+import models.UserModel;
 import org.testng.Assert;
 import pages.ChangePasswordPage;
 import pages.MyAccountPage;
@@ -13,9 +13,9 @@ public class ChangePasswordPageBL {
         changePasswordPage = new ChangePasswordPage();
     }
 
-    public ChangePasswordPageBL changePassword(ChangePasswordModel changePasswordModel) {
-        inputPassword(changePasswordModel.getPassword());
-        inputPasswordConfirm(changePasswordModel.getConfirmPassword());
+    public ChangePasswordPageBL changePassword(UserModel userModel) {
+        inputPassword(userModel.getPassword());
+        inputPasswordConfirm(userModel.getPasswordConfirm());
         clickOnChangePasswordContinueButton();
         myAccountPage = new MyAccountPage();
         return this;

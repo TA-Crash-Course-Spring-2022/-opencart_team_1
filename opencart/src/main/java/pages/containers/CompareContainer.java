@@ -17,7 +17,7 @@ public class CompareContainer extends BasePage {
     }
 
     public WebElement getProductTitle() {
-        return rootElement.findElement(By.xpath(".//table/tbody[1]/tr[1]"));
+        return rootElement.findElement(By.xpath(".//table/tbody[1]/tr[1]/td"));
     }
 
     public WebElement getImage() {
