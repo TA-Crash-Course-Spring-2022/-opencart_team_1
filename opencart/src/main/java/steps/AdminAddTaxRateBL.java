@@ -19,8 +19,10 @@ public class AdminAddTaxRateBL {
        selectTypeTaxRate(taxRateModel.isTaxType());
        checkCustomerGroupCheckbox(taxRateModel.isCustomerGroup());
        selectGeoZone(taxRateModel.getGeoZone());
-       clickSaveNewTaxRateButton();
        return this;
+    }
+    public String getTaxName(){
+        return adminAddTaxRatesPage.getTaxNameInput().getAttribute("value");
     }
 
     public void fillTaxNameInput(String taxName){

@@ -1,14 +1,12 @@
 package pages;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 @Getter
 public class AdminEditCurrencyPage extends BasePage {
-   // @FindBy(id = "input-title")
+
     @FindBy(xpath = "//*[@id='input-title']")
     private WebElement currencyTitleInput;
 

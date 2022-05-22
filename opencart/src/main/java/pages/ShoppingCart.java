@@ -66,6 +66,12 @@ public class ShoppingCart extends BasePage{
     @FindBy(xpath = "//a[text()='Continue Shopping']")
     private WebElement continueShoppingButton;
 
+    @FindBy(xpath = "//div[@class='col-sm-4 col-sm-offset-8']//tbody/tr/td[1]")
+    private List<WebElement> taxTitles;
+
+    @FindBy(xpath = "//strong[text()='Sub-Total:']")
+    private WebElement checkoutPriceElementForVisible;
+
     public List<ShoppingCartContainer> getProducts() {
         return products.stream().map(ShoppingCartContainer::new).collect(Collectors.toList());
     }

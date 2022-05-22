@@ -1,6 +1,9 @@
 package steps;
 
+import driver.Driver;
 import enums.ShoppingCartBasicValues;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.BasePage;
 import pages.CheckoutPage;
 import pages.ShoppingCart;
@@ -82,6 +85,18 @@ public class ShoppingCartBL extends BasePage {
     }
     public ShoppingCartBL clickContinueShopping(){
         shoppingCart.getContinueShoppingButton().click();
+        return this;
+    }
+    public ShoppingCartBL verifyTaxOnShoppingCart(String taxName){
+        boolean isTax = false;
+        Driver.waitUntilVisible(shoppingCart.getCheckoutPriceElementForVisible());
+        for(WebElement title:shoppingCart.getTaxTitles()){
+            System.out.println(title.getText());
+           if(title.getText().contains(taxName)){
+               isTax = true;
+           }
+        }
+        Assert.assertTrue(isTax);
         return this;
     }
 }

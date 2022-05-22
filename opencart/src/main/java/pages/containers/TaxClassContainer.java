@@ -13,7 +13,7 @@ public class TaxClassContainer extends BasePage {
     }
 
     public WebElement getTaxClassCheckbox() {
-        return rootElement.findElement(By.xpath(".//td[1]"));
+        return rootElement.findElement(By.xpath(".//tbody"));
     }
 
     public WebElement getTaxClassTitle() {

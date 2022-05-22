@@ -1,5 +1,7 @@
 package steps;
 
+import driver.Driver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.AdminTaxRatesPage;
 import pages.containers.TaxRateContainer;
@@ -46,7 +48,7 @@ public class AdminTaxRatesPageBL {
     }
 
     public AdminTaxRatesPageBL sortByDateModified() {
-        adminTaxRatesPage.getGeoZoneSortButton().click();
+        adminTaxRatesPage.getDateModifiedSortButton().click();
         return this;
     }
 
@@ -56,7 +58,9 @@ public class AdminTaxRatesPageBL {
     }
 
     public AdminTaxRatesPageBL clickDeleteTax() {
+        Driver.waitBeClickable(adminTaxRatesPage.getDeleteButton());
         adminTaxRatesPage.getDeleteButton().click();
+        Driver.switchToAlertAndAccept();
         return this;
     }
 
@@ -71,14 +75,48 @@ public class AdminTaxRatesPageBL {
         }
         return this;
     }
+
     public AdminTaxRatesPageBL uncheckTaxCheckbox(int id) {
         if (adminTaxRatesPage.getTaxes().get(id).getTaxCheckbox().isSelected()) {
             adminTaxRatesPage.getTaxes().get(id).getTaxCheckbox().click();
         }
         return this;
     }
-    public void verifySuccessfulAddTaxRate(){
+
+    public void verifySuccessfulAddTaxRateMessage() {
         String successfulModifiedTaxRate = "Success: You have modified tax rates!";
         Assert.assertTrue(adminTaxRatesPage.getSuccessfulAddTaxRateMessage().getText().contains(successfulModifiedTaxRate));
+    }
+
+    public AdminTaxRatesPageBL verifySuccessfulAddTaxRateOnPage(String taxName) {
+        boolean taxRateIsAdd = false;
+        for (TaxRateContainer tax : adminTaxRatesPage.getTaxes()) {
+            if (tax.getTaxNameText().getText().contains(taxName)) {
+                taxRateIsAdd = true;
+            }
+        }
+        Assert.assertTrue(taxRateIsAdd);
+        return this;
+    }
+
+    public AdminTaxRatesPageBL verifySuccessfulDeleteTaxRateOnPage(String taxName) {
+        boolean taxRateIsAdd = true;
+        for (TaxRateContainer tax : adminTaxRatesPage.getTaxes()) {
+            if (tax.getTaxNameText().getText().contains(taxName)) {
+                taxRateIsAdd = false;
+            }
+        }
+        Assert.assertTrue(taxRateIsAdd);
+        return this;
+    }
+    public AdminTaxRatesPageBL deleteTaxRateByName(String name) throws InterruptedException {
+        System.out.println(name);
+        for(TaxRateContainer tax: adminTaxRatesPage.getTaxes()){
+           if(tax.getTaxNameText().getText().contains(name)){
+               tax.getTaxCheckbox().click();
+           }
+        }
+        Thread.sleep(5000);
+        return this;
     }
 }

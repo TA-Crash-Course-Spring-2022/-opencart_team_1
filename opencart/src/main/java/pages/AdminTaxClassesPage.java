@@ -25,7 +25,7 @@ public class AdminTaxClassesPage extends BasePage{
     @FindBy(xpath = "//thead/tr/td[2]")
     private WebElement sortTaxClassByTitleButton;
 
-    @FindBy(xpath = ".//tbody")
+    @FindBy(xpath = ".//tbody/tr")
     private List<WebElement> taxClasses;
 
     public List<TaxClassContainer> getTaxes() {
