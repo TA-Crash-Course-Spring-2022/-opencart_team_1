@@ -8,7 +8,7 @@ import static enums.Url.BASIC_URL;
 
 public class AddTwoProductsToCartBySearch extends BaseTest {
     @Test
-    public void addMacBookAndIphoneToCartBySearch() {
+    public void addIphoneAndiMacToCartBySearch() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         MainPageBL mainPageBL = new MainPageBL();
         String product1 = "iPhone";
