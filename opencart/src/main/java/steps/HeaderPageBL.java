@@ -48,6 +48,21 @@ public class HeaderPageBL {
         headerPage.getCurrencySymbolOnHomePage().getText();
         return this;
     }
+    public HeaderPageBL clickOnSearchField() {
+        headerPage.getSearchField().click();
+        headerPage.getSearchField().clear();
+        return this;
+    }
+
+    public MainPageBL clickOnSearchButton() {
+        headerPage.getSearchButton().click();
+        return new MainPageBL();
+    }
+    public HeaderPageBL sendNameToSearchField(String keyWords) {
+        headerPage.getSearchField().sendKeys(keyWords);
+        return this;
+    }
+
     public String findCurrencyByName(){
         return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
     }

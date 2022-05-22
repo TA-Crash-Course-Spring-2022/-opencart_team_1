@@ -1,6 +1,5 @@
 package steps;
 
-import containers.WishListContainer;
 import pages.WishList;
 import pages.containers.WishListContainer;
 

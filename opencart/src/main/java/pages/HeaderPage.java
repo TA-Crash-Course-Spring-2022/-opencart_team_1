@@ -36,4 +36,16 @@ public class HeaderPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-link dropdown-toggle']/strong")
     private WebElement currencySymbolOnHomePage;
 
+    @FindBy(xpath = "//*[@name = 'search']")
+    private WebElement searchField;
+
+    @FindBy(xpath = "//*[@class='fa fa-search']")
+    private WebElement searchButton;
+
+    public WebElement getSearchField() {
+        return searchField;
+    }
+    public WebElement getSearchButton() {
+        return searchButton;
+    }
 }

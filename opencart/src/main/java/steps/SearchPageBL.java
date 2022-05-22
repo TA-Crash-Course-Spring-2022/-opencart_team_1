@@ -2,10 +2,12 @@ package steps;
 
 import org.openqa.selenium.WebElement;
 import pages.SearchPage;
+import pages.ShoppingCart;
 
 public class SearchPageBL {
 
     private SearchPage searchPage = new SearchPage();
+
 
     public SearchPageBL() {
     }

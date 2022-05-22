@@ -1,6 +1,7 @@
 package steps;
 
 import enums.ShoppingCartBasicValues;
+import org.testng.Assert;
 import pages.BasePage;
 import pages.CheckoutPage;
 import pages.ShoppingCart;
@@ -84,4 +85,12 @@ public class ShoppingCartBL extends BasePage {
         shoppingCart.getContinueShoppingButton().click();
         return this;
     }
+    public void verifyProductInCart(String product) {
+        Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
+    }
+    public ShoppingCartBL clickOnShoppingCartButton() {
+        shoppingCart.getShoppingCartButton().click();
+        return new ShoppingCartBL();
+    }
 }
+
