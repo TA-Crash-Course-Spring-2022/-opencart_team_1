@@ -1,5 +1,6 @@
 package steps;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.testng.Assert;
 import pages.HeaderPage;
 
@@ -31,9 +32,34 @@ public class HeaderPageBL {
         return this;
     }
 
-    public HeaderPageBL chooseCurrency(short id) {
-        headerPage.getCurrencyDropDownUl().get(id).click();
+    public int chooseCurrency() {
+        int currencyQuantity = headerPage.getCurrencyDropDownUl().size();
+        int selectedQuantity =  RandomUtils.nextInt(0,currencyQuantity);
+        headerPage.getCurrencyDropDownUl().get(selectedQuantity).click();
+        return selectedQuantity;
+    }
+
+    public HeaderPageBL clickOnSearchField() {
+        headerPage.getSearchField().click();
+        headerPage.getSearchField().clear();
         return this;
+    }
+
+    public MainPageBL clickOnSearchButton() {
+        headerPage.getSearchButton().click();
+        return new MainPageBL();
+    }
+    public HeaderPageBL sendNameToSearchField(String keyWords) {
+        headerPage.getSearchField().sendKeys(keyWords);
+        return this;
+    }
+
+    public String findCurrencyByName(){
+        return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
+
+    public String getSelectedCurrencyLeftSymbol(){
+        return headerPage.getCurrencySymbolOnHomePage().getText().toLowerCase();
+
     }
 
     public boolean checkNewCurrency(String code) {
@@ -46,7 +72,7 @@ public class HeaderPageBL {
         return count;
     }
 
-    public void verifyCurrencyWasChanged(short id) {
+    public void verifyCurrencyWasChangedOnHeaderPAge(int id) {
         Assert.assertEquals(headerPage.getCurrencySymbolOnHomePage().getText(), String.valueOf(headerPage.getCurrencyDropDownUl().get(id).getText().charAt(0)));
     }
 }

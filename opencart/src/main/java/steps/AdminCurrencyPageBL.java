@@ -23,15 +23,11 @@ public class AdminCurrencyPageBL {
         adminCurrencyPageBL = new AdminCurrencyPage();
     }
 
-    public AdminCurrencyPageBL deleteLastAddedCurrency() throws InterruptedException {
+    public AdminCurrencyPageBL deleteLastAddedCurrency(){
         Driver.waitBeClickable(adminCurrencyPageBL.getSortByLastUpdatedButton());
-        Thread.sleep(2000);
         adminCurrencyPageBL.getSortByLastUpdatedButton().click();
-        Thread.sleep(2000);
         adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCheckbox().click();
-        Thread.sleep(2000);
         adminCurrencyPageBL.getDeleteCurrencyValueButton().click();
-        Thread.sleep(2000);
         Driver.switchToAlertAndAccept();
         return this;
     }
@@ -113,7 +109,7 @@ public class AdminCurrencyPageBL {
         new HeaderPageBL().dropCurrencyDropButton();
        // Assert.assertEquals(new HeaderPageBL().findCurrencyByName(),newTitle );
     }
-    public AdminCurrencyPageBL editLastAddedCurrency() throws InterruptedException {
+    public AdminCurrencyPageBL editLastAddedCurrency(){
         adminCurrencyPageBL.getSortByLastUpdatedButton().click();
         adminCurrencyPageBL.getCurrencies().get(1).getEditCurrencyButton().click();
         new AdminEditCurrencyPageBL().editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
