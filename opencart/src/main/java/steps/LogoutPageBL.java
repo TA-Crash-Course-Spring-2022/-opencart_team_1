@@ -11,6 +11,9 @@ public class LogoutPageBL {
         logoutPage = new LogoutPage();
     }
 
+    public HeaderPageBL getHeaderPageBL() {
+        return new HeaderPageBL();
+    }
     public LogoutPageBL clickOnContinueButton() {
         logoutPage.getContinueButton().click();
         return new LogoutPageBL();
@@ -21,4 +24,6 @@ public class LogoutPageBL {
         Assert.assertEquals(logoutPage.getSuccessfulLogoutMessage().getText(), expectedMessage, "Error!");
         return this;
     }
+
+
 }

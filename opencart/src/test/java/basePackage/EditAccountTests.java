@@ -1,5 +1,6 @@
 package basePackage;
 
+import models.UserModel;
 import navigation.Navigation;
 import org.testng.annotations.Test;
 import repository.ChangePasswordRepository;
@@ -19,7 +20,8 @@ public class EditAccountTests extends BaseTest {
                 .getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginPerson(LoginRepository.getLoginUser());
+                .loginPerson(LoginRepository.getLoginUser())
+                .verifySuccessfulLogin();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
@@ -34,7 +36,8 @@ public class EditAccountTests extends BaseTest {
                 .getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginPerson(LoginRepository.getLoginUser());
+                .loginPerson(LoginRepository.getLoginUser())
+                .verifySuccessfulLogin();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
@@ -49,7 +52,8 @@ public class EditAccountTests extends BaseTest {
                 .getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginPerson(LoginRepository.getLoginUser());
+                .loginPerson(LoginRepository.getLoginUser())
+                .verifySuccessfulLogin();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
@@ -64,7 +68,8 @@ public class EditAccountTests extends BaseTest {
                 .getHeaderPageBL()
                 .clickOnMyAccountButton()
                 .clickOnLoginButton()
-                .loginPerson(LoginRepository.getLoginUser());
+                .loginPerson(LoginRepository.getLoginUser())
+                .verifySuccessfulLogin();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
@@ -80,6 +85,7 @@ public class EditAccountTests extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
+                .verifyUserRegistration()
                 .clickOnSuccessfulRegistrationContinueButton();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
@@ -96,6 +102,7 @@ public class EditAccountTests extends BaseTest {
                 .clickOnMyAccountButton()
                 .clickOnRegisterButton()
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
+                .verifyUserRegistration()
                 .clickOnSuccessfulRegistrationContinueButton();
         new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
@@ -104,6 +111,36 @@ public class EditAccountTests extends BaseTest {
                 .verifySuccessfulEditInformation();
         new MyAccountPageBL()
                 .clickOnChangeYourPassword();
+        new ChangePasswordPageBL()
+                .changePassword(ChangePasswordRepository.getPositiveChangePassword())
+                .verifySuccessfulChangePassword();
+    }
+    @Test
+    public void changeLastNameAndPasswordStory() {
+        UserModel newUser = RegisterRepository.getValidRegisterUser();
+        new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
+        new MainPageBL()
+                .getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnRegisterButton()
+                .registerNewPerson(newUser)
+                .verifyUserRegistration()
+                .clickOnSuccessfulRegistrationContinueButton();
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
+                .clickOnLogoutButton();
+        new LogoutPageBL()
+                .verifySuccessfulLogout()
+                .getHeaderPageBL()
+                .clickOnMyAccountButton()
+                .clickOnLoginButton();
+        new LoginPageBL()
+                .loginPerson(newUser)
+                .verifySuccessfulLogin();
+        myAccountPageBL.clickOnEditYourAccountInformation();
+        new EditAccountPageBL()
+                .editLastNameOnly(EditAccountRepository.getLastNameEdit())
+                .verifySuccessfulEditInformation();
+        myAccountPageBL.clickOnChangeYourPassword();
         new ChangePasswordPageBL()
                 .changePassword(ChangePasswordRepository.getPositiveChangePassword())
                 .verifySuccessfulChangePassword();
