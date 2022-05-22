@@ -44,7 +44,9 @@ public class MainPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
+        mainPage.waitForElement();
         product.getAddToCartButton().click();
+        mainPage.waitForElement();
         return this;
     }
 
@@ -54,17 +56,28 @@ public class MainPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
+        mainPage.waitForElement();
         product.getAddToCompareButton().click();
+        mainPage.waitForElement();
         return this;
     }
 
     public MainPageBL clickOnProductComparison() {
+        mainPage.waitForElement();
         mainPage.getProductComparison().click();
         return new MainPageBL();
     }
 
-    public void verifyAddToCompare() {
-        Assert.assertTrue(mainPage.getSuccessfulAddProductToCompareMessage().getText().contains("Success: "));
+    public MainPageBL verifyAddToShoppingCart() {
+        mainPage.waitForElement();
+        Assert.assertTrue(mainPage.getSuccessfulMessage().getText().contains("Success: "));
+        return this;
+    }
+
+    public MainPageBL verifyAddToCompare() {
+        mainPage.waitForElement();
+        Assert.assertTrue(mainPage.getSuccessfulMessage().getText().contains("Success: "));
+        return this;
     }
 
 }

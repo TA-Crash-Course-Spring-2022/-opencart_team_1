@@ -1,11 +1,12 @@
 package pages;
 
+import driver.Driver;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.concurrent.TimeUnit;
 import pages.containers.ProductContainer;
 
 @Getter
@@ -29,7 +30,12 @@ public class MainPage extends BasePage {
     private WebElement productComparison;
 
     @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
-    private WebElement successfulAddProductToCompareMessage;
+    private WebElement successfulMessage;
+
+    public void waitForElement() {
+        WebDriver driver = Driver.DRIVERS.get();
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+    }
   
   public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();

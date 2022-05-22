@@ -22,14 +22,6 @@ public class LoginPageBL {
         return this;
     }
 
-    public LoginPageBL loginPersonUponRegistration(RegisterModel registerModel) {
-        inputEmail(registerModel.getEmail());
-        inputPassword(registerModel.getPassword());
-        clickOnLoginContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
-    }
-
     private void inputEmail(String email) {
         loginPage.getInputLoginEmail().clear();
         loginPage.getInputLoginEmail().sendKeys(email);
