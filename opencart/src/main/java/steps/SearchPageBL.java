@@ -1,6 +1,7 @@
 package steps;
 
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.SearchPage;
 import pages.ShoppingCart;
 
@@ -20,6 +21,25 @@ public class SearchPageBL {
                 break;
             }
         }
+        return this;
+    }
+    public SearchPageBL CheckSearch(String search){
+        boolean productContain = true;
+        for(WebElement product: searchPage.getProducts() )
+            if(!product.getText().contains(search)){
+                productContain =  false;
+            }
+        Assert.assertTrue(productContain);
+        return this;
+    }
+    public SearchPageBL checkRandomSearch(String search){
+        boolean productContain = true;
+        for(WebElement product: searchPage.getProducts()){
+            if(!product.getText().contains(search)){
+                productContain = false;
+            }
+        }
+        Assert.assertTrue(productContain);
         return this;
     }
 

@@ -1,7 +1,6 @@
 package steps;
 
-import models.LoginModel;
-import models.RegisterModel;
+import models.UserModel;
 import org.testng.Assert;
 import pages.LoginPage;
 import pages.MyAccountPage;
@@ -15,9 +14,9 @@ public class LoginPageBL {
         loginPage = new LoginPage();
     }
 
-    public LoginPageBL loginPerson(LoginModel loginModel) {
-        inputEmail(loginModel.getEmail());
-        inputPassword(loginModel.getPassword());
+    public LoginPageBL loginPerson(UserModel userModel) {
+        inputEmail(userModel.getEmail());
+        inputPassword(userModel.getPassword());
         clickOnLoginContinueButton();
         myAccountPage = new MyAccountPage();
         return this;

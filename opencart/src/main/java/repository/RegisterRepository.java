@@ -1,16 +1,16 @@
 package repository;
 
-import models.RegisterModel;
+import models.UserModel;
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class RegisterModelRepository {
+public class RegisterRepository {
 
-    private RegisterModelRepository() {
+    private RegisterRepository() {
     }
 
-    public static RegisterModel getValidRegisterUser() {
+    public static UserModel getValidRegisterUser() {
         String password = RandomStringUtils.randomAlphabetic(5);
-        return RegisterModel.builder()
+        return UserModel.builder()
                 .setFirstName(RandomStringUtils.randomAlphabetic(5))
                 .setLastName(RandomStringUtils.randomAlphabetic(7))
                 .setEmail(RandomStringUtils.randomAlphabetic(5) + "@gmail.com")

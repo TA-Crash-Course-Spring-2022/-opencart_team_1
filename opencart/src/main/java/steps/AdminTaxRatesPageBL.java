@@ -1,5 +1,6 @@
 package steps;
 
+import org.testng.Assert;
 import pages.AdminTaxRatesPage;
 import pages.containers.TaxRateContainer;
 
@@ -49,7 +50,7 @@ public class AdminTaxRatesPageBL {
         return this;
     }
 
-    public AdminTaxRatesPageBL addTaxClick() {
+    public AdminTaxRatesPageBL clickAddTaxButton() {
         adminTaxRatesPage.getAddNewButton().click();
         return this;
     }
@@ -75,5 +76,9 @@ public class AdminTaxRatesPageBL {
             adminTaxRatesPage.getTaxes().get(id).getTaxCheckbox().click();
         }
         return this;
+    }
+    public void verifySuccessfulAddTaxRate(){
+        String successfulModifiedTaxRate = "Success: You have modified tax rates!";
+        Assert.assertTrue(adminTaxRatesPage.getSuccessfulAddTaxRateMessage().getText().contains(successfulModifiedTaxRate));
     }
 }

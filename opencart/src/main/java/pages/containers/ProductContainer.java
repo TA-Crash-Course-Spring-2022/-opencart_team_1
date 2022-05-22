@@ -1,9 +1,11 @@
 package pages.containers;
 
+import pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class ProductContainer {
+
+public class ProductContainer extends BasePage {
 
     private WebElement rootElement;
 
@@ -29,5 +31,21 @@ public class ProductContainer {
 
     public WebElement getCompareThisProductButton() {
         return rootElement.findElement(By.xpath(".//*[contains(@class,'exchange')]/.."));
+
+    public WebElement getProductTitle() {
+        return element.findElement(By.xpath(".//h4/a"));
+    }
+
+    public WebElement getAddToCartButton() {
+        return element.findElement(By.xpath(".//*[@class= 'button-group']/button[1]"));
+    }
+
+    public WebElement getAddToWishListButton() {
+        return element.findElement(By.xpath(".//*[@class= 'button-group']/button[2]"));
+    }
+
+    public WebElement getAddToCompareButton() {
+        return element.findElement(By.xpath(".//*[@class= 'button-group']/button[3]"));
+
     }
 }
