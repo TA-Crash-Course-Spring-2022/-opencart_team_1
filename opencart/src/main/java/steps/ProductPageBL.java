@@ -1,5 +1,6 @@
 package steps;
 
+import org.testng.Assert;
 import pages.ProductPage;
 import pages.containers.ProductContainer;
 
@@ -17,7 +18,9 @@ public class ProductPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
+        productPage.waitForElement();
         product.getAddToCartButton().click();
+        productPage.waitForElement();
         return this;
     }
 
@@ -27,7 +30,9 @@ public class ProductPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
+        productPage.waitForElement();
         product.getAddToCompareButton().click();
+        productPage.waitForElement();
         return this;
     }
 
@@ -38,6 +43,12 @@ public class ProductPageBL {
 
     public ProductPageBL clickOnListViewButton() {
         productPage.getListViewButton().click();
+        return this;
+    }
+
+    public ProductPageBL verifyAddToShoppingCart() {
+        productPage.waitForElement();
+        Assert.assertTrue(productPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
 }

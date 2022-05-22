@@ -14,6 +14,22 @@ public class AddToCartTests extends BaseTest {
         new MainPageBL()
                 .addProductToCart("iPhone")
                 .addProductToCart("MacBook")
+
+    @Test
+    public void addFourProductsToCartFromProductPage() {
+        new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
+        new MainPageBL()
+                .getMenuBL()
+                .clickOnDesktopsButton()
+                .clickOnShowAllDesktopsButton();
+        new ProductPageBL()
+                .addProductToCart("iPod Classic")
+                .verifyAddToShoppingCart()
+                .addProductToCart("HTC Touch HD")
+                .verifyAddToShoppingCart()
+                .addProductToCart("Sony VAIO")
+                .verifyAddToShoppingCart()
+                .addProductToCart("Palm Treo Pro")
                 .verifyAddToShoppingCart();
     }
 }
