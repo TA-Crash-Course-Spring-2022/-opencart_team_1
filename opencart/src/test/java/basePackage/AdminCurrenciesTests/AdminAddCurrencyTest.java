@@ -14,42 +14,38 @@ import static enums.Url.BASIC_URL_NSTRAFER;
 
 public class AdminAddCurrencyTest extends BaseTest {
     @Test(priority = 1)
-    public void addAdminCurrencyTest() {
+    public void addAdminCurrencyTest() throws InterruptedException {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
         new AdminNavigationPageBL()
                 .navigateToCurrenciesPage();
-        new AdminCurrencyPageBL().clickAddCurrencyButton();
-        new AdminEditCurrencyPageBL()
-                .editAndSaveNewCurrency();
         new AdminCurrencyPageBL()
-                .verifySuccessfulModifiedOnAdminCurrencyPage()
-                .verifySuccessfulModifiedOnHomePage();
+                .clickAddCurrencyButton();
+        new AdminEditCurrencyPageBL()
+                .addAndSaveNewCurrency();
     }
 
     @Test(priority = 2)
-    public void editAdminCurrencyTest() {
+    public void editAdminCurrencyTest() throws InterruptedException {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
         new AdminNavigationPageBL()
                 .navigateToCurrenciesPage();
         new AdminCurrencyPageBL()
-                .editLastAddedCurrency()
-                .verifySuccessfulModifiedOnAdminCurrencyPage()
-                .verifyCurrencyIsChangedOnHomePage();
+                .editLastAddedCurrency();
     }
 
     @Test(priority = 3)
-    public void deleteAdminCurrencyTest() {
+    public void deleteAdminCurrencyTest() throws InterruptedException {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
-        new AdminNavigationPageBL().navigateToCurrenciesPage();
+        new AdminNavigationPageBL()
+                .navigateToCurrenciesPage();
         new AdminCurrencyPageBL()
                 .deleteLastAddedCurrency()
-                .verifySuccessfulModifiedOnAdminCurrencyPage()
-                .verifyCurrencyWasDeletedOnHomePage();
+                .verifySuccessfulModifiedOnAdminCurrencyPage();
     }
 }

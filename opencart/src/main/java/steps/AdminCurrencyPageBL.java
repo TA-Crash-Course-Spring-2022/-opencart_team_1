@@ -7,6 +7,7 @@ import navigation.Navigation;
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import pages.AdminCurrencyPage;
+import pages.AdminEditCurrencyPage;
 import pages.HeaderPage;
 import repository.EditCurrencyModelRepository;
 
@@ -22,11 +23,15 @@ public class AdminCurrencyPageBL {
         adminCurrencyPageBL = new AdminCurrencyPage();
     }
 
-    public AdminCurrencyPageBL deleteLastAddedCurrency(){
+    public AdminCurrencyPageBL deleteLastAddedCurrency() throws InterruptedException {
         Driver.waitBeClickable(adminCurrencyPageBL.getSortByLastUpdatedButton());
-        adminCurrencyPageBL.getSortByValueButton().click();
+        Thread.sleep(2000);
+        adminCurrencyPageBL.getSortByLastUpdatedButton().click();
+        Thread.sleep(2000);
         adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCheckbox().click();
+        Thread.sleep(2000);
         adminCurrencyPageBL.getDeleteCurrencyValueButton().click();
+        Thread.sleep(2000);
         Driver.switchToAlertAndAccept();
         return this;
     }
@@ -103,16 +108,19 @@ public class AdminCurrencyPageBL {
         Assert.assertTrue(adminCurrencyPageBL.getSuccesfulModifiedCurrency().getText().contains(successfulEditCurrency));
         return this;
     }
-    public void verifySuccessfulModifiedOnHomePage(){
-        String currencyCode = adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCodeText().getText();
+    public void verifySuccessfulModifiedOnHomePage(String newTitle){
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new HeaderPageBL().dropCurrencyDropButton();
-        Assert.assertEquals(new HeaderPageBL().findCurrencyByName(), currencyCode);
+       // Assert.assertEquals(new HeaderPageBL().findCurrencyByName(),newTitle );
     }
-    public AdminCurrencyPageBL editLastAddedCurrency(){
+    public AdminCurrencyPageBL editLastAddedCurrency() throws InterruptedException {
         adminCurrencyPageBL.getSortByLastUpdatedButton().click();
         adminCurrencyPageBL.getCurrencies().get(1).getEditCurrencyButton().click();
-        new AdminEditCurrencyPageBL().editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel()).clickSaveCurrency();
+        new AdminEditCurrencyPageBL().editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
+        String editedCurrencyCode = new AdminEditCurrencyPageBL().getCodeInputValue();
+        new AdminEditCurrencyPageBL().clickSaveCurrency();
+        new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+        Assert.assertTrue(new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(editedCurrencyCode));
         return this;
     }
     public AdminCurrencyPageBL verifyCurrencyIsChangedOnHomePage(){

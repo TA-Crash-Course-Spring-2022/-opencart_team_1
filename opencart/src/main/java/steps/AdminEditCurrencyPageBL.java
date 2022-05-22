@@ -2,15 +2,19 @@ package steps;
 
 import driver.Driver;
 import models.EditCurrencyModel;
+import navigation.Navigation;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pages.AdminCurrencyPage;
 import pages.AdminEditCurrencyPage;
 import repository.EditCurrencyModelRepository;
 import utils.DriverUtils;
 
+import static enums.Url.ADMIN_URL;
+import static enums.Url.BASIC_URL_NSTRAFER;
+
 
 public class AdminEditCurrencyPageBL {
-
     private AdminEditCurrencyPage adminEditCurrencyPage;
 
     private String currencyNewTitle;
@@ -27,10 +31,15 @@ public class AdminEditCurrencyPageBL {
         fillCurrencyValueInput(editCurrencyModel.getCurrencyValue());
         return this;
     }
-    public AdminEditCurrencyPageBL editAndSaveNewCurrency(){
+    public AdminEditCurrencyPageBL addAndSaveNewCurrency() {
         editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
         selectCurrencyStatus();
+        String newCurrencyTitle = adminEditCurrencyPage.getCodeInput().getAttribute("value");
+//        Thread.sleep(20000);
         clickSaveCurrency();
+        new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+        String currencyCodeOnHomePage;
+        Assert.assertTrue(new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(newCurrencyTitle));
         return this;
     }
     private void fillCurrencyTitleInput(String title) {
@@ -67,8 +76,13 @@ public class AdminEditCurrencyPageBL {
         return this;
     }
     public AdminCurrencyPage clickSaveCurrency(){
-        currencyNewTitle = adminEditCurrencyPage.getCurrencyTitleInput().getText();
         adminEditCurrencyPage.getSaveEditCurrencyButton().click();
         return new AdminCurrencyPage();
     }
+    public String getCodeInputValue(){
+        return adminEditCurrencyPage.getCodeInput().getAttribute("value");
+    }
+//    public String getCurrencyTitle(){
+//        return newCurrencyTitle;
+//    }
 }
