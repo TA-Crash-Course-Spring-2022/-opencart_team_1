@@ -10,7 +10,7 @@ public class ChangeCurrencyOnHomePageTest extends BaseTest {
 
 
     @Test(description = "changeCurrencyOnHomePage")
-    public void changeCurrencyOnHomePageTest() throws InterruptedException {
+    public void changeCurrencyOnHomePageTest(){
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new HeaderPageBL()
                 .dropCurrencyDropButton()
