@@ -17,7 +17,7 @@ public class SearchPage extends BasePage {
     private WebElement searchButton;
 
     @FindBy(xpath = ".//*[@id='description' and @type='checkbox']")
-    private WebElement searchInSubCategories;;
+    private WebElement searchInSubCategories;
 
     @FindBy(xpath = ".//input[@id='description']")
     private WebElement searchInDesc;
@@ -26,11 +26,12 @@ public class SearchPage extends BasePage {
             @FindBy(className = "form-control"),
             @FindBy(tagName = "option")
     })
-    private List<WebElement> searchInCategories;;
+    private List<WebElement> searchInCategories;
 
     @FindBy(xpath = ".//select[@class='form-control']")
     WebElement searchFormButton;
 
     @FindBy(xpath = ".//div[@class='product-thumb']")
     List<WebElement> products;
+
 }
