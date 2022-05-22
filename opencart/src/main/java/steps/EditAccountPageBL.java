@@ -1,6 +1,6 @@
 package steps;
 
-import models.EditAccountModel;
+import models.UserModel;
 import org.testng.Assert;
 import pages.EditAccountPage;
 import pages.MyAccountPage;
@@ -14,39 +14,39 @@ public class EditAccountPageBL {
         editAccountPage = new EditAccountPage();
     }
 
-    public EditAccountPageBL editInformation(EditAccountModel editAccountModel) {
-        editFirstName(editAccountModel.getFirstName());
-        editLastName(editAccountModel.getLastName());
-        editEmail(editAccountModel.getEmail());
-        editTelephone(editAccountModel.getTelephone());
+    public EditAccountPageBL editInformation(UserModel userModel) {
+        editFirstName(userModel.getFirstName());
+        editLastName(userModel.getLastName());
+        editEmail(userModel.getEmail());
+        editTelephone(userModel.getTelephone());
         clickOnEditContinueButton();
         myAccountPage = new MyAccountPage();
         return this;
     }
 
-    public EditAccountPageBL editFirstNameOnly(EditAccountModel editAccountModel) {
-        editFirstName(editAccountModel.getFirstName());
+    public EditAccountPageBL editFirstNameOnly(UserModel userModel) {
+        editFirstName(userModel.getFirstName());
         clickOnEditContinueButton();
         myAccountPage = new MyAccountPage();
         return this;
     }
 
-    public EditAccountPageBL editLastNameOnly(EditAccountModel editAccountModel) {
-        editLastName(editAccountModel.getLastName());
+    public EditAccountPageBL editLastNameOnly(UserModel userModel) {
+        editLastName(userModel.getLastName());
         clickOnEditContinueButton();
         myAccountPage = new MyAccountPage();
         return this;
     }
 
-    public EditAccountPageBL editEmailOnly(EditAccountModel editAccountModel) {
-        editEmail(editAccountModel.getEmail());
+    public EditAccountPageBL editEmailOnly(UserModel userModel) {
+        editEmail(userModel.getEmail());
         clickOnEditContinueButton();
         myAccountPage = new MyAccountPage();
         return this;
     }
 
-    public EditAccountPageBL editTelephoneOnly(EditAccountModel editAccountModel) {
-        editTelephone(editAccountModel.getTelephone());
+    public EditAccountPageBL editTelephoneOnly(UserModel userModel) {
+        editTelephone(userModel.getTelephone());
         clickOnEditContinueButton();
         myAccountPage = new MyAccountPage();
         return this;
