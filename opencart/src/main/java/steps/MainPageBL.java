@@ -18,16 +18,8 @@ public class MainPageBL {
         return new HeaderPageBL();
     }
 
-    public MainPageBL addProductToCart(String productName) {
-        ProductContainer product = mainPage.getProducts().stream()
-                .filter(e -> e.getTitle().equals(productName))
-                .findFirst().orElseThrow(NullPointerException::new);
-        product.getAddToCartButton().click();
-        return this;
-    }
-    public void verifySuccessAddToCart(String productName) {
-        Assert.assertTrue(mainPage.getAlert().getAttribute("class").contains("success"));
-        Assert.assertTrue(mainPage.getAlert().getText().contains(productName), "Other items added to cart");
+    public MenuBL getMenuBL() {
+        return new MenuBL();
     }
 
     public MainPageBL checkCurrencySymbolOnAllProducts(){
@@ -46,7 +38,6 @@ public class MainPageBL {
                 .orElseThrow(NullPointerException::new);
         mainPage.waitForElement();
         product.getAddToCartButton().click();
-        mainPage.waitForElement();
         return this;
     }
 
@@ -58,7 +49,6 @@ public class MainPageBL {
                 .orElseThrow(NullPointerException::new);
         mainPage.waitForElement();
         product.getAddToCompareButton().click();
-        mainPage.waitForElement();
         return this;
     }
 
@@ -79,5 +69,4 @@ public class MainPageBL {
         Assert.assertTrue(mainPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
-
 }
