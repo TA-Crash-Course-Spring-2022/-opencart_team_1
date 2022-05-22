@@ -38,8 +38,28 @@ public class HeaderPageBL {
         headerPage.getCurrencyDropDownUl().get(selectedQuantity).click();
         return selectedQuantity;
     }
+
+    public HeaderPageBL clickOnSearchField() {
+        headerPage.getSearchField().click();
+        headerPage.getSearchField().clear();
+        return this;
+    }
+
+    public MainPageBL clickOnSearchButton() {
+        headerPage.getSearchButton().click();
+        return new MainPageBL();
+    }
+    public HeaderPageBL sendNameToSearchField(String keyWords) {
+        headerPage.getSearchField().sendKeys(keyWords);
+        return this;
+    }
+
+    public String findCurrencyByName(){
+        return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
+
     public String getSelectedCurrencyLeftSymbol(){
         return headerPage.getCurrencySymbolOnHomePage().getText().toLowerCase();
+
     }
 
     public boolean checkNewCurrency(String code) {

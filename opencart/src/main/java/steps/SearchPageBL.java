@@ -3,10 +3,12 @@ package steps;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.SearchPage;
+import pages.ShoppingCart;
 
 public class SearchPageBL {
 
     private SearchPage searchPage = new SearchPage();
+
 
     public SearchPageBL() {
     }

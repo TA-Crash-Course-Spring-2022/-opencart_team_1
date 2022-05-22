@@ -1,8 +1,10 @@
 package pages;
 
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import pages.containers.CheckoutContainer;
 import pages.containers.ShoppingCartContainer;
@@ -66,7 +68,18 @@ public class ShoppingCart extends BasePage{
     @FindBy(xpath = "//a[text()='Continue Shopping']")
     private WebElement continueShoppingButton;
 
+    @FindBy(xpath = "//div[@id = 'top-links']//a[@title='Shopping Cart']")
+    private WebElement shoppingCartButton;
+
     public List<ShoppingCartContainer> getProducts() {
         return products.stream().map(ShoppingCartContainer::new).collect(Collectors.toList());
     }
+    public WebElement getProductInCart(String productName) {
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='table-responsive']//table[contains(@class,'table table-bordered')]//a[text() = '"+productName+"']"))));
+    }
+    public WebElement getShoppingCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
+        return shoppingCartButton;
+    }
+
 }
