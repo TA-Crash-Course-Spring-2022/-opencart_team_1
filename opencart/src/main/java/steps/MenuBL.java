@@ -1,7 +1,6 @@
 package steps;
 
 import pages.Menu;
-import utils.DriverUtils;
 
 public class MenuBL {
 
@@ -11,88 +10,88 @@ public class MenuBL {
         menu = new Menu();
     }
 
-    public MenuBL clickOnDesktops() {
-       menu.getDesktops().click();
+    public MenuBL clickOnDesktopsButton() {
+       menu.getDesktopsButton().click();
         return this;
     }
 
-    public MenuBL clickOnDesktopsPc() {
-        menu.getDesktopsPC().click();
+    public MenuBL clickOnDesktopsPcButton() {
+        menu.getDesktopsPCButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnDesktopsMac() {
-        menu.getDesktopsMac().click();
+    public MenuBL clickOnDesktopsMacButton() {
+        menu.getDesktopsMacButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnShowAllDesktops() {
-        menu.getAllDesktops().click();
+    public MenuBL clickOnShowAllDesktopsButton() {
+        menu.getAllDesktopsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnLaptopsAndNotebooks() {
-        menu.getLaptopsAndNotebooks().click();
+    public MenuBL clickOnLaptopsAndNotebooksButton() {
+        menu.getLaptopsAndNotebooksButton().click();
         return this;
     }
 
-    public MenuBL clickOnLaptopsAndNotebooksMacs() {
-        menu.getLaptopsAndNotebooksMacs().click();
+    public MenuBL clickOnLaptopsAndNotebooksMacsButton() {
+        menu.getLaptopsAndNotebooksMacsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnLaptopsAndNotebooksWindows() {
-        menu.getLaptopsAndNotebooksWindows().click();
+    public MenuBL clickOnLaptopsAndNotebooksWindowsButton() {
+        menu.getLaptopsAndNotebooksWindowsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnShowAllLaptopsAndNotebooks() {
-        menu.getAllLaptopsAndNotebooks().click();
+    public MenuBL clickOnShowAllLaptopsAndNotebooksButton() {
+        menu.getAllLaptopsAndNotebooksButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnComponents() {
-        menu.getComponents().click();
+    public MenuBL clickOnComponentsButton() {
+        menu.getComponentsButton().click();
         return this;
     }
 
-    public MenuBL clickOnMonitors() {
-        menu.getMonitors().click();
+    public MenuBL clickOnMonitorsButton() {
+        menu.getMonitorsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnShowAllComponents() {
-        menu.getAllComponents().click();
+    public MenuBL clickOnShowAllComponentsButton() {
+        menu.getAllComponentsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnTablets() {
-        menu.getTablets().click();
+    public MenuBL clickOnTabletsButton() {
+        menu.getTabletsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnSoftware() {
-        menu.getSoftware().click();
+    public MenuBL clickOnSoftwareButton() {
+        menu.getSoftwareButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnPhonesAndPDAs() {
-        menu.getPhonesAndPDAs().click();
+    public MenuBL clickOnPhonesAndPDAsButton() {
+        menu.getPhonesAndPDAsButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnCameras() {
-        menu.getCameras().click();
+    public MenuBL clickOnCamerasButton() {
+        menu.getCamerasButton().click();
         return new MenuBL();
     }
 
-    public MenuBL clickOnMp3Players() {
-        menu.getMp3Players().click();
+    public MenuBL clickOnMp3PlayersButton() {
+        menu.getMp3PlayersButton().click();
         return this;
     }
 
-    public MenuBL clickOnShowAllMp3Players() {
-        menu.getAllMp3Players().click();
+    public MenuBL clickOnShowAllMp3PlayersButton() {
+        menu.getAllMp3PlayersButton().click();
         return new MenuBL();
     }
 }
