@@ -26,6 +26,24 @@ public class HeaderPageBL {
         return new LoginPageBL();
     }
 
+    public HeaderPageBL dropCurrencyDropButton(){
+        headerPage.getChangeCurrencyButton().click();
+        return this;
+    }
+    public HeaderPageBL chooseCurrency(short id){
+        headerPage.getCurrencyDropDownUl().get(id).click();
+        return this;
+    }
+    public boolean checkNewCurrency(String code) {
+        boolean count = false;
+        for (int i = 0; i < headerPage.getCurrencies().size(); i++) {
+            if (headerPage.getCurrencyDropDownUl().get(i).getAttribute("name").contains(code)) {
+                count = true;
+            }
+        }
+        return count;
+    }
+
     public ShoppingCartBL clickOnShoppingCartButton() {
         headerPage.getShoppingCartButton().click();
         return new ShoppingCartBL();
@@ -34,15 +52,6 @@ public class HeaderPageBL {
     public CheckoutPageBL clickOnCheckoutButton() {
         headerPage.getCheckoutButton().click();
         return new CheckoutPageBL();
-    }
-
-    public HeaderPageBL dropCurrencyDropButton(){
-        headerPage.getChangeCurrencyButton().click();
-        return this;
-    }
-    public HeaderPageBL chooseCurrency(short id){
-        headerPage.getCurrencyDropDownUl().get(id).click();
-        return this;
     }
     public HeaderPageBL getSelectedCurrencySymbol(){
         headerPage.getCurrencySymbolOnHomePage().getText();
