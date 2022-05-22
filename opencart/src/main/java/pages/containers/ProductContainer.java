@@ -30,5 +30,4 @@ public class ProductContainer {
     public WebElement getCompareThisProductButton() {
         return rootElement.findElement(By.xpath(".//*[contains(@class,'exchange')]/.."));
     }
-
 }
