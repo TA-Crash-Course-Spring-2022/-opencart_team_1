@@ -39,4 +39,6 @@ public class HeaderPage extends BasePage {
     @FindBy(xpath = "//div[@class='btn-group open']//li")
     private List<WebElement> currencies;
 
+
+
 }

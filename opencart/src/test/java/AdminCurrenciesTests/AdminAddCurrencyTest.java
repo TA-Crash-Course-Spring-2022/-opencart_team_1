@@ -1,20 +1,15 @@
-package basePackage.AdminCurrenciesTests;
+package AdminCurrenciesTests;
 
 import basePackage.BaseTest;
-import models.EditCurrencyModel;
 import navigation.Navigation;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AdminCurrencyPage;
-import repository.EditCurrencyModelRepository;
 import steps.*;
 
 import static enums.Url.ADMIN_URL;
-import static enums.Url.BASIC_URL_NSTRAFER;
 
 public class AdminAddCurrencyTest extends BaseTest {
     @Test(priority = 1)
-    public void addAdminCurrencyTest() throws InterruptedException {
+    public void addAdminCurrencyTest(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -27,7 +22,7 @@ public class AdminAddCurrencyTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void editAdminCurrencyTest() throws InterruptedException {
+    public void editAdminCurrencyTest(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -36,9 +31,8 @@ public class AdminAddCurrencyTest extends BaseTest {
         new AdminCurrencyPageBL()
                 .editLastAddedCurrency();
     }
-
     @Test(priority = 3)
-    public void deleteAdminCurrencyTest() throws InterruptedException {
+    public void deleteAdminCurrencyTest(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();

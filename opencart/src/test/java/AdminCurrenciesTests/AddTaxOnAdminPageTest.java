@@ -1,10 +1,8 @@
-package basePackage.AdminCurrenciesTests;
+package AdminCurrenciesTests;
 
 import basePackage.BaseTest;
-import models.TaxRateModel;
 import navigation.Navigation;
 import org.testng.annotations.Test;
-import pages.AdminTaxRatesPage;
 import repository.TaxRateModelRepository;
 import steps.*;
 
@@ -12,7 +10,7 @@ import static enums.Url.ADMIN_URL;
 
 public class AddTaxOnAdminPageTest extends BaseTest {
     @Test
-    public void addAdminTaxRateTest() throws InterruptedException {
+    public void addAdminTaxRateTest() {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -22,7 +20,6 @@ public class AddTaxOnAdminPageTest extends BaseTest {
                 .clickAddTaxButton();
         new AdminAddTaxRateBL().buildTaxRate(TaxRateModelRepository.getValidTaxRate());
         new AdminTaxRatesPageBL().verifySuccessfulAddTaxRate();
-        Thread.sleep(10000);
     }
     @Test
     public void setTaxRateToClass(){

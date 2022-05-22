@@ -10,7 +10,7 @@ import static enums.Url.*;
 public class AdminGetProductsForSearchTest extends BaseTest {
 
     @Test
-    public void searchProductByAdminProductPage() throws InterruptedException {
+    public void searchProductByAdminProductPage(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -19,6 +19,5 @@ public class AdminGetProductsForSearchTest extends BaseTest {
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new SearchFieldBL().typeSearchProduct(productName).clickOnSearchButton();
         new SearchPageBL().CheckSearch(productName);
-        Thread.sleep(10000);
     }
 }

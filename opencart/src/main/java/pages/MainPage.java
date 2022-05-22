@@ -1,16 +1,17 @@
 package pages;
 
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.containers.ProductContainer;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class MainPage extends BasePage {
+    @FindBy(xpath = "//p[@class='price']")
+    private List<WebElement> price;
+
+
 
     @FindBy(xpath = ".//*[contains(@class, 'product-layout')]")
     private List<WebElement> products;
@@ -28,4 +29,5 @@ public class MainPage extends BasePage {
         }
         return productContainers;
     }
+  
 }
