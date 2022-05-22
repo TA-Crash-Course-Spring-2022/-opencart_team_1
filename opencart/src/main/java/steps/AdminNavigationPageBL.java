@@ -65,4 +65,11 @@ public class AdminNavigationPageBL {
         adminNavigationPageBL.getTaxClassesButton().click();
         return this;
     }
+    public AdminNavigationPageBL navigateToProductCatalog(){
+        Driver.waitBeClickable(adminNavigationPageBL.getCatalogDropButton());
+        adminNavigationPageBL.getCatalogDropButton().click();
+        Driver.waitBeClickable(adminNavigationPageBL.getProductsButton());
+        adminNavigationPageBL.getProductsButton().click();
+        return this;
+    }
 }

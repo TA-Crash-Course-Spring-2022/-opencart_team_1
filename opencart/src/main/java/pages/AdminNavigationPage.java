@@ -22,4 +22,10 @@ public class AdminNavigationPage extends BasePage {
 
     @FindBy(xpath = "//a[text()='Tax Classes']")
     private WebElement taxClassesButton;
+
+    @FindBy(xpath = "//a[text()='Products']")
+    private WebElement productsButton;
+
+    @FindBy(id = "menu-catalog")
+    private WebElement catalogDropButton;
 }
