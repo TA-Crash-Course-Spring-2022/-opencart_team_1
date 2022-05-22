@@ -1,7 +1,7 @@
 package pages;
 
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.containers.ProductContainer;
@@ -10,16 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class MainPage extends BasePage {
+public class ProductPage extends BasePage {
 
-    @FindBy(xpath = ".//*[contains(@class, 'product-layout')]")
+    @FindBy(xpath = ".//*[@id= 'content']")
     private List<WebElement> products;
 
-    @FindBy(xpath = ".//*[text() = 'product comparison']")
-    private WebElement productComparison;
+    @FindBy(xpath = ".//*[@id= 'compare-total']")
+    private WebElement productCompare;
 
-    @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
-    private WebElement successfulAddProductToCompareMessage;
+    @FindBy(xpath = ".//*[@id= 'list-view']")
+    private WebElement listViewButton;
+
+    @FindBy(xpath = ".//*[@id= 'grid-view']")
+    private WebElement gridViewButton;
 
     public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();

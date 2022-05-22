@@ -4,7 +4,6 @@ import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.containers.CompareContainer;
-import pages.containers.ProductContainer;
 
 import java.util.ArrayList;
 import java.util.List;
