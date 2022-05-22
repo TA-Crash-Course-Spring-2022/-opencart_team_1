@@ -6,7 +6,7 @@ import steps.ShoppingCartBL;
 
 import static enums.Url.BASIC_URL;
 
- public class AddProductToCartBySearch extends BaseTest {
+public class AddProductToCartBySearch extends BaseTest {
     @Test
     public void addiPodToCartBySearch() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());

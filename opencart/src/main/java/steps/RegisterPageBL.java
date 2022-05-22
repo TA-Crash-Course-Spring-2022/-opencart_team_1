@@ -1,6 +1,6 @@
 package steps;
 
-import models.RegisterModel;
+import models.UserModel;
 import org.testng.Assert;
 import pages.MyAccountPage;
 import pages.RegisterPage;
@@ -17,12 +17,12 @@ public class RegisterPageBL {
     }
 
 
-    public RegisterPageBL registerNewPerson(RegisterModel registerModel) {
-        inputFirstName(registerModel.getFirstName());
-        inputLastName(registerModel.getLastName());
-        inputEmail(registerModel.getEmail());
-        inputTelephone(registerModel.getTelephone());
-        inputPassword(registerModel.getPassword());
+    public RegisterPageBL registerNewPerson(UserModel userModel) {
+        inputFirstName(userModel.getFirstName());
+        inputLastName(userModel.getLastName());
+        inputEmail(userModel.getEmail());
+        inputTelephone(userModel.getTelephone());
+        inputPassword(userModel.getPassword());
         chooseSubscribe(1);
         clickPolicyCheckbox();
         clickOnContinueButton();

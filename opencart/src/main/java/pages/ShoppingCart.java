@@ -74,12 +74,13 @@ public class ShoppingCart extends BasePage{
     public List<ShoppingCartContainer> getProducts() {
         return products.stream().map(ShoppingCartContainer::new).collect(Collectors.toList());
     }
-    public WebElement getProductInCart(String productName) {
-        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='table-responsive']//table[contains(@class,'table table-bordered')]//a[text() = '"+productName+"']"))));
-    }
     public WebElement getShoppingCartButton() {
         wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
         return shoppingCartButton;
     }
 
+    public WebElement getProductInCart(String productName) {
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='table-responsive']//table[contains(@class,'table table-bordered')]//a[text() = '"+productName+"']"))));
+    }
 }
+

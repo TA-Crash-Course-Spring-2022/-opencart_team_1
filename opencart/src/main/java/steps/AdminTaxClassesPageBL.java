@@ -33,4 +33,8 @@ public class AdminTaxClassesPageBL {
         adminTaxClassesPage.getTaxes().get(id).getTaxClassEditButton().click();
         return this;
     }
+    public AdminTaxClassesPageBL editTaxableGoodsClass(){
+        adminTaxClassesPage.getTaxes().get(1).getTaxClassEditButton().click();
+        return this;
+    }
 }

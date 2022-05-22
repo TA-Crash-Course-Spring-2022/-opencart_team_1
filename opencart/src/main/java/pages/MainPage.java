@@ -1,5 +1,7 @@
 package pages;
 
+import lombok.Getter;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,16 +10,20 @@ import pages.containers.ProductContainer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPage extends BasePage{
+@Getter
+public class MainPage extends BasePage {
 
-    @FindBy(xpath = ".//*[contains(@class,'product-layout')]")
+    @FindBy(xpath = ".//*[contains(@class, 'product-layout')]")
     private List<WebElement> products;
+
+    @FindBy(xpath = ".//*[text() = 'product comparison']")
+    private WebElement productComparison;
+
+    @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
+    private WebElement successfulAddProductToCompareMessage;
 
     @FindBy(xpath = "//div[contains(@class,'alert-')]")
     private WebElement alert;
-
-    @FindBy(xpath = "//a[normalize-space()='product comparison']")
-    private WebElement comparisonAlert;
 
     public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();
@@ -30,10 +36,4 @@ public class MainPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(alert));
         return alert;
     }
-
-    public WebElement getComparisonAlert() {
-        wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
-        return comparisonAlert;
-    }
 }
-

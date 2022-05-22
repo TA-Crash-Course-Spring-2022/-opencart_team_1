@@ -86,8 +86,9 @@ public class ShoppingCartBL extends BasePage {
         return this;
     }
     public void verifyProductInCart(String product) {
-        Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
+        Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "Product wasn't added to wish list");
     }
+
     public ShoppingCartBL clickOnShoppingCartButton() {
         shoppingCart.getShoppingCartButton().click();
         return new ShoppingCartBL();

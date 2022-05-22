@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import repository.ChangePasswordModelRepository;
 import repository.EditAccountModelRepository;
 import repository.RegisterModelRepository;
+import repository.RegisterRepository;
 import steps.*;
 
 import static enums.Url.BASIC_URL;
@@ -15,7 +16,7 @@ public class EditAccountStories extends BaseTest {
 
     @Test
     public void changeLastNameAndPassword() {
-        RegisterModel newUser = RegisterModelRepository.getValidRegisterUser();
+        RegisterModel newUser = RegisterRepository.getValidRegisterUser();
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         MainPageBL mainPageBL = new MainPageBL();
         RegisterPageBL registerPageBL = mainPageBL.getHeaderPageBL()

@@ -1,10 +1,17 @@
 package steps;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import driver.Driver;
+import models.EditCurrencyModel;
 import navigation.Navigation;
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import pages.AdminCurrencyPage;
+import pages.AdminEditCurrencyPage;
 import pages.HeaderPage;
+import repository.EditCurrencyModelRepository;
+
+import javax.swing.*;
 
 import static enums.Url.BASIC_URL_NSTRAFER;
 
@@ -14,6 +21,19 @@ public class AdminCurrencyPageBL {
 
     public AdminCurrencyPageBL() {
         adminCurrencyPageBL = new AdminCurrencyPage();
+    }
+
+    public AdminCurrencyPageBL deleteLastAddedCurrency() throws InterruptedException {
+        Driver.waitBeClickable(adminCurrencyPageBL.getSortByLastUpdatedButton());
+        Thread.sleep(2000);
+        adminCurrencyPageBL.getSortByLastUpdatedButton().click();
+        Thread.sleep(2000);
+        adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCheckbox().click();
+        Thread.sleep(2000);
+        adminCurrencyPageBL.getDeleteCurrencyValueButton().click();
+        Thread.sleep(2000);
+        Driver.switchToAlertAndAccept();
+        return this;
     }
 
     public AdminCurrencyPageBL clickRefreshCurrencyButton() {
@@ -26,9 +46,9 @@ public class AdminCurrencyPageBL {
         return this;
     }
 
-    public AdminCurrencyPageBL clickDeleteCurrencyButton() {
+    public void clickDeleteCurrencyButton() {
         adminCurrencyPageBL.getDeleteCurrencyValueButton().click();
-        return this;
+
     }
 
     public AdminCurrencyPageBL checkSummaryCurrencyCheckbox(short id) {
@@ -60,7 +80,8 @@ public class AdminCurrencyPageBL {
         return this;
     }
 
-    public AdminCurrencyPageBL sortByLastUpdated() {
+    public AdminCurrencyPageBL sortByLastUpdated(){
+        Driver.waitBeClickable(adminCurrencyPageBL.getSortByLastUpdatedButton());
         adminCurrencyPageBL.getSortByLastUpdatedButton().click();
         return this;
     }
@@ -82,18 +103,37 @@ public class AdminCurrencyPageBL {
         adminCurrencyPageBL.getCurrencies().get(1).getEditCurrencyButton().click();
         return this;
     }
-    public void verifySuccessfulModifiedOnAdminCurrencyPage(){
+    public AdminCurrencyPageBL verifySuccessfulModifiedOnAdminCurrencyPage(){
         String successfulEditCurrency = "Success: You have modified currencies!";
         Assert.assertTrue(adminCurrencyPageBL.getSuccesfulModifiedCurrency().getText().contains(successfulEditCurrency));
+        return this;
     }
-    public void verifySuccessfulModifiedOnHomePage(){
-        String currencyCode = adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCodeText().getText();
-        String currencyCodeOnHomePage;
+    public void verifySuccessfulModifiedOnHomePage(String newTitle){
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new HeaderPageBL().dropCurrencyDropButton();
-        Assert.assertEquals(new HeaderPageBL().findCurrencyByName(), currencyCode);
-
-
+       // Assert.assertEquals(new HeaderPageBL().findCurrencyByName(),newTitle );
+    }
+    public AdminCurrencyPageBL editLastAddedCurrency() throws InterruptedException {
+        adminCurrencyPageBL.getSortByLastUpdatedButton().click();
+        adminCurrencyPageBL.getCurrencies().get(1).getEditCurrencyButton().click();
+        new AdminEditCurrencyPageBL().editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
+        String editedCurrencyCode = new AdminEditCurrencyPageBL().getCodeInputValue();
+        new AdminEditCurrencyPageBL().clickSaveCurrency();
+        new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+        Assert.assertTrue(new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(editedCurrencyCode));
+        return this;
+    }
+    public AdminCurrencyPageBL verifyCurrencyIsChangedOnHomePage(){
+       String addedCurrencyOnAdminPage =  adminCurrencyPageBL.getCurrencies().get(1).getCurrencyTitleText().getText();
+       new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+       new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(addedCurrencyOnAdminPage);
+       return this;
+    }
+    public AdminCurrencyPageBL verifyCurrencyWasDeletedOnHomePage(){
+        String addedCurrencyOnAdminPage =  adminCurrencyPageBL.getCurrencies().get(1).getCurrencyTitleText().getText();
+        new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
+        new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(addedCurrencyOnAdminPage);
+        return this;
     }
     public String getCurrencyCode(){
         return  adminCurrencyPageBL.getCurrencies().get(1).getCurrencyCodeText().getText();

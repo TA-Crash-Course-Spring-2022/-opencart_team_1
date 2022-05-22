@@ -3,6 +3,7 @@ package pages;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -51,4 +52,9 @@ public class HeaderPage extends BasePage {
     public WebElement getSearchButton() {
         return searchButton;
     }
+    public WebElement getShoppingCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
+        return shoppingCartButton;
+    }
+
 }

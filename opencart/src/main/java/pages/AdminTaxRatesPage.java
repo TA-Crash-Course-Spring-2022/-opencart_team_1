@@ -44,6 +44,9 @@ public class AdminTaxRatesPage extends BasePage {
     @FindBy(xpath = ".//table[@class = 'table table-bordered table-hover']")
     private List<WebElement> taxes;
 
+    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    private WebElement successfulAddTaxRateMessage;
+
     public List<TaxRateContainer> getTaxes() {
         return taxes.stream().map(TaxRateContainer::new).collect(Collectors.toList());
     }
