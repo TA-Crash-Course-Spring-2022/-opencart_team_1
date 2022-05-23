@@ -34,13 +34,12 @@ public class MainPageBL {
   
     public MainPageBL addRandomProductToCart(){
         int quantityProducts = mainPage.getProductsAddToCart().size();
-        mainPage.getProductsAddToCart().get(RandomUtils.nextInt(1,quantityProducts)).click();
+        mainPage.getProductsAddToCart().get(1).click();
         return this;
     }
-    public MainPageBL clickOnLinkToShoppingCart() throws InterruptedException {
+    public MainPageBL clickOnLinkToShoppingCart(){
         Driver.waitBeClickable(mainPage.getSuccessfulAddProductLinkToShoppingCart());
         mainPage.getSuccessfulAddProductLinkToShoppingCart().click();
-       // Thread.sleep(10000);
         return this;
     }
 
