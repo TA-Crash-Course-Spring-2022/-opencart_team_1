@@ -40,14 +40,5 @@ public class ProductPage extends BasePage {
         }
         return productContainers;
     }
-
-    public WebElement getSuccessfulMessageAlert() {
-        wait.until(ExpectedConditions.visibilityOf(successfulMessage));
-        return successfulMessage;
-    }
-
-    public void waitForElement() {
-        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
-    }
 }
 

@@ -22,12 +22,6 @@ public class ComparePage extends BasePage {
 
     @FindBy(xpath = ".//*[@id= 'content']/h1")
     private WebElement comparePageText;
-
-    public void waitForElement() {
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
-    }
-
-
     public List<CompareContainer> getProducts() {
         List<CompareContainer> compareContainers = new ArrayList<>();
         for (WebElement rootElement : products) {

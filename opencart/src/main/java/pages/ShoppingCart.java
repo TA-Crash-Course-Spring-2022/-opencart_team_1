@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Getter
-public class ShoppingCart extends BasePage{
+public class ShoppingCart extends BasePage {
 
     @FindBy(xpath = ".//*[@id= 'content']/h1")
     private WebElement shoppingCartText;
@@ -77,7 +77,7 @@ public class ShoppingCart extends BasePage{
 
     @FindBy(xpath = "//strong[text()='Sub-Total:']")
     private WebElement checkoutPriceElementForVisible;
-  
+
     @FindBy(xpath = "//div[@id = 'top-links']//a[@title='Shopping Cart']")
     private WebElement shoppingCartButton;
 
@@ -85,15 +85,13 @@ public class ShoppingCart extends BasePage{
     public List<ShoppingCartContainer> getProducts() {
         return products.stream().map(ShoppingCartContainer::new).collect(Collectors.toList());
     }
+
     public WebElement getProductInCart(String productName) {
-        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='table-responsive']//table[contains(@class,'table table-bordered')]//a[text() = '"+productName+"']"))));
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='table-responsive']//table[contains(@class,'table table-bordered')]//a[text() = '" + productName + "']"))));
     }
+
     public WebElement getShoppingCartButton() {
         wait.until(ExpectedConditions.visibilityOf(shoppingCartButton));
         return shoppingCartButton;
-    }
-
-    public void waitForElement() {
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
     }
 }
