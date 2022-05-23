@@ -89,7 +89,7 @@ public class ShoppingCartBL extends BasePage {
 
     public ShoppingCartBL clickCheckoutButton() {
         shoppingCart.getCheckoutButton().click();
-        shoppingCart.waitForElement();
+        Driver.waitForcibly();
         return this;
     }
 
@@ -108,7 +108,7 @@ public class ShoppingCartBL extends BasePage {
             }
         }
         Assert.assertTrue(isTax);
-        return this;
+        return this;}
 
         public void verifyProductInCart (String product){
             Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
@@ -122,5 +122,4 @@ public class ShoppingCartBL extends BasePage {
             return this;
         }
     }
-}
 

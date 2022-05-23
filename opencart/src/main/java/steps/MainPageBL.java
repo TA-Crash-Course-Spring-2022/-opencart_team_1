@@ -42,7 +42,7 @@ public class MainPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-        mainPage.waitForElement();
+        Driver.waitForcibly();
         product.getAddToCartButton().click();
     }
 
@@ -59,16 +59,16 @@ public class MainPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-        mainPage.waitForElement();
+        Driver.waitForcibly();
         product.getAddToCompareButton().click();
     }
 
     private void clickOnProductComparison() {
-        mainPage.getSuccessfulMessageAlert();
+        Driver.waitForcibly();
         mainPage.getProductComparison().click();
     }
 
-    public MainPageBL checkCurrencySymbolOnAllProducts(){
+   public MainPageBL checkCurrencySymbolOnAllProducts(){
         String selectedCurrencyOnHomePage = new HeaderPageBL().getSelectedCurrencyLeftSymbol();
         for(WebElement price: mainPage.getPrice()){
             Assert.assertTrue(price.getText().contains(selectedCurrencyOnHomePage));

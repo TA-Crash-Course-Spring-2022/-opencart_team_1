@@ -1,5 +1,6 @@
 package steps;
 
+import driver.Driver;
 import org.testng.Assert;
 import pages.ProductPage;
 import pages.containers.ProductContainer;
@@ -40,7 +41,7 @@ public class ProductPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-        productPage.waitForElement();
+        Driver.waitForcibly();
         product.getAddToCartButton().click();
     }
 
@@ -50,17 +51,17 @@ public class ProductPageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-        productPage.waitForElement();
+        Driver.waitForcibly();
         product.getAddToCompareButton().click();
     }
 
     private void clickOnProductCompare() {
-        productPage.waitForElement();
+        Driver.waitForcibly();
         productPage.getProductCompare().click();
     }
 
     private void clickOnShoppingCartButton() {
-        productPage.getSuccessfulMessageAlert();
+        Driver.waitForcibly();
         productPage.getShoppingCartButton().click();
     }
     public ProductPageBL clickOnListViewButton() {
@@ -68,13 +69,11 @@ public class ProductPageBL {
         return this;
     }
     public ProductPageBL verifyAddToShoppingCart() {
-        productPage.getSuccessfulMessageAlert();
         Assert.assertTrue(productPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
 
     public ProductPageBL verifyAddToComparePage() {
-        productPage.getSuccessfulMessageAlert();
         Assert.assertTrue(productPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }

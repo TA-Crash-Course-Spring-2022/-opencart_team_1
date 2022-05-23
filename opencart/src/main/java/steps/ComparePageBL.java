@@ -1,5 +1,6 @@
 package steps;
 
+import driver.Driver;
 import org.testng.Assert;
 import pages.ComparePage;
 import pages.containers.CompareContainer;
@@ -18,14 +19,13 @@ public class ComparePageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-        comparePage.waitForElement();
+        Driver.waitForcibly();
         products.getAddToCartButton().click();
-        comparePage.waitForElement();
         return this;
     }
 
     public ComparePageBL verifyAddToShoppingCart() {
-        comparePage.waitForElement();
+        Driver.waitForcibly();
         Assert.assertTrue(comparePage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
