@@ -1,6 +1,7 @@
 package steps;
 
 import models.CheckoutModel;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pages.CheckoutPage;
 import pages.SuccessfulOrderPage;
@@ -26,8 +27,8 @@ public class CheckoutPageBL {
         inputAddress1(checkoutModel.getAddress1());
         inputCity(checkoutModel.getCity());
         inputPostCode(checkoutModel.getPostCode());
-        chooseCountry(220);
-        chooseRegion(3493);
+        chooseCountry("Ukraine");
+        chooseRegion("L'vivs'ka Oblast'");
         clickOnContinueButtonDetails();
         clickOnContinueButtonDelivery();
         clickTermsAndConditionCheckbox();
@@ -44,8 +45,8 @@ public class CheckoutPageBL {
         inputAddress1(checkoutModel.getAddress1());
         inputCity(checkoutModel.getCity());
         inputPostCode(checkoutModel.getPostCode());
-        chooseCountry(220);
-        chooseRegion(3493);
+        chooseCountry("Ukraine");
+        chooseRegion("L'vivs'ka Oblast'");
         clickOnContinueButtonDetails();
         chooseAddress("existing");
         clickOnContinueButtonForLoginUser();
@@ -63,6 +64,7 @@ public class CheckoutPageBL {
     }
 
     private void clickOnContinueButton() {
+        checkoutPage.waitForElement();
         checkoutPage.getContinueButton().click();
     }
 
@@ -106,19 +108,23 @@ public class CheckoutPageBL {
         checkoutPage.getPostCode().sendKeys(postCode);
     }
 
-    private void chooseCountry(int value) {
-        new DriverUtils().clickOnElementJS(checkoutPage.getCountry(value));
+    private void chooseCountry(String country) {
+        Select select = new Select(checkoutPage.getCountry());
+        select.selectByVisibleText(country);
     }
 
-    private void chooseRegion(int value) {
-        new DriverUtils().clickOnElementJS(checkoutPage.getRegion(value));
+    private void chooseRegion(String region) {
+        Select select = new Select(checkoutPage.getRegion());
+        select.selectByVisibleText(region);
     }
 
     private void clickOnContinueButtonDetails() {
+        checkoutPage.waitForElement();
         checkoutPage.getContinueButtonDetails().click();
     }
 
     private void clickOnContinueButtonDelivery() {
+        checkoutPage.waitForElement();
         checkoutPage.getContinueButtonDelivery().click();
     }
 
@@ -127,6 +133,7 @@ public class CheckoutPageBL {
     }
 
     private void clickOnContinueButtonPayment() {
+        checkoutPage.waitForElement();
         checkoutPage.getContinueButtonPayment().click();
     }
 
@@ -143,7 +150,7 @@ public class CheckoutPageBL {
     }
 
     public CheckoutPageBL verifyOrder() {
-        String expectedMessage = "Your order has been placed!";
+        String expectedMessage = "Checkout";
         Assert.assertEquals(successfulOrderPage.getSuccessfulOrderMessage().getText(), expectedMessage, "Error!");
         return this;
     }

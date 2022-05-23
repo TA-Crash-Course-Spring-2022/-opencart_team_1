@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.containers.ProductContainer;
 
 import java.util.ArrayList;
@@ -26,13 +27,11 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = ".//*[@id= 'grid-view']")
     private WebElement gridViewButton;
 
+    @FindBy(xpath = ".//*[text()= 'shopping cart']")
+    private WebElement shoppingCartButton;
+
     @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
     private WebElement successfulMessage;
-
-    public void waitForElement() {
-        WebDriver driver = Driver.DRIVERS.get();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-    }
 
     public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();
@@ -41,4 +40,14 @@ public class ProductPage extends BasePage {
         }
         return productContainers;
     }
+
+    public WebElement getSuccessfulMessageAlert() {
+        wait.until(ExpectedConditions.visibilityOf(successfulMessage));
+        return successfulMessage;
+    }
+
+    public void waitForElement() {
+        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
+    }
 }
+

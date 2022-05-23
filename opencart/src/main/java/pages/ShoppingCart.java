@@ -10,10 +10,14 @@ import pages.containers.CheckoutContainer;
 import pages.containers.ShoppingCartContainer;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Getter
 public class ShoppingCart extends BasePage{
+
+    @FindBy(xpath = ".//*[@id= 'content']/h1")
+    private WebElement shoppingCartText;
     @FindBy(xpath = "//div[@class='table-responsive']//tbody")
     private List<WebElement> products;
 
@@ -89,4 +93,7 @@ public class ShoppingCart extends BasePage{
         return shoppingCartButton;
     }
 
+    public void waitForElement() {
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
+    }
 }

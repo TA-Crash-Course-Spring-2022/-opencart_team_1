@@ -5,8 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.containers.CheckoutContainer;
+import pages.containers.CompareContainer;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Getter
@@ -45,6 +48,12 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = ".//*[@id='input-payment-postcode']")
     private WebElement postCode;
 
+    @FindBy(xpath = ".//*[@id='input-payment-country']")
+    private WebElement country;
+
+    @FindBy(xpath = ".//*[@id='input-payment-zone']")
+    private WebElement region;
+
     @FindBy(xpath = ".//*[@id ='button-payment-address']")
     private WebElement continueButtonForLoginUser;
 
@@ -66,7 +75,7 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = ".//*[@id='collapse-shipping-method']/div/p[4]/textarea]")
     private WebElement deliveryComment;
 
-    @FindBy(xpath = ".//*[@id ='button-shipping_method']")
+    @FindBy(xpath = ".//*[@id ='button-shipping-method']")
     private WebElement continueButtonDelivery;
 
     @FindBy(xpath = ".//*[@name='payment_method']")
@@ -95,15 +104,15 @@ public class CheckoutPage extends BasePage {
         return driver.findElement(By.xpath(".//*[@class ='radio' and @value = '" + value + "']"));
     }
 
-    public WebElement getCountry(int value) {
-        return driver.findElement(By.xpath(".//*[@id='input-payment-country' and @value = '" + value + "']"));
-    }
-
-    public WebElement getRegion(int value) {
-        return driver.findElement(By.xpath(".//*[@id= 'input-payment-zone' and @value = '" + value + "']"));
-    }
-
     public List<CheckoutContainer> getOrders() {
-        return orders.stream().map(CheckoutContainer::new).collect(Collectors.toList());
+        List<CheckoutContainer> checkoutContainers = new ArrayList<>();
+        for (WebElement rootElement : orders) {
+            checkoutContainers.add(new CheckoutContainer(rootElement));
+        }
+        return checkoutContainers;
+    }
+
+    public void waitForElement() {
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
     }
 }

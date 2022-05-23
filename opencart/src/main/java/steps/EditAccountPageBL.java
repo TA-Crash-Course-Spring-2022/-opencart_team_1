@@ -8,7 +8,6 @@ import pages.MyAccountPage;
 public class EditAccountPageBL {
 
     private EditAccountPage editAccountPage;
-    private MyAccountPage myAccountPage;
 
     public EditAccountPageBL() {
         editAccountPage = new EditAccountPage();
@@ -20,36 +19,31 @@ public class EditAccountPageBL {
         editEmail(userModel.getEmail());
         editTelephone(userModel.getTelephone());
         clickOnEditContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
+        return new EditAccountPageBL();
     }
 
     public EditAccountPageBL editFirstNameOnly(UserModel userModel) {
         editFirstName(userModel.getFirstName());
         clickOnEditContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
+        return new EditAccountPageBL();
     }
 
     public EditAccountPageBL editLastNameOnly(UserModel userModel) {
         editLastName(userModel.getLastName());
         clickOnEditContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
+        return new EditAccountPageBL();
     }
 
     public EditAccountPageBL editEmailOnly(UserModel userModel) {
         editEmail(userModel.getEmail());
         clickOnEditContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
+        return new EditAccountPageBL();
     }
 
     public EditAccountPageBL editTelephoneOnly(UserModel userModel) {
         editTelephone(userModel.getTelephone());
         clickOnEditContinueButton();
-        myAccountPage = new MyAccountPage();
-        return this;
+        return new EditAccountPageBL();
     }
 
     public void editFirstName(String firstname) {
@@ -74,18 +68,6 @@ public class EditAccountPageBL {
 
     private void clickOnEditContinueButton() {
         editAccountPage.getEditContinueButton().click();
-    }
-
-    public EditAccountPageBL verifySuccessfulEditInformation() {
-        String expectedMessage = "Success: Your account has been successfully updated.";
-        Assert.assertEquals(myAccountPage.getSuccessfulEditAccountMessage().getText(), expectedMessage, "Error!");
-        return this;
-    }
-
-    public EditAccountPageBL checkEditTelephoneInvalid() {
-        String expectedMessage = "Invalid telephone number";
-        Assert.assertEquals(myAccountPage.getSuccessfulEditAccountMessage().getText(), expectedMessage, "Success: Your account has been successfully updated.");
-        return this;
     }
 
     public EditAccountPageBL clickOnEditBackButton() {

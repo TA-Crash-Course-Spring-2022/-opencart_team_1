@@ -20,92 +20,107 @@ public class ShoppingCartBL extends BasePage {
         shoppingCart.getProducts().get(id).getProductName().click();
         return this;
     }
+
     public ShoppingCartBL fillQuantityInput(int id, int quantity) {
-        try{
+        try {
             String quantityString = String.valueOf(quantity);
             shoppingCart.getProducts().get(id).getProductName().sendKeys(quantityString);
-        }
-        catch (IllegalArgumentException quantityException){
+        } catch (IllegalArgumentException quantityException) {
             String quantityString = String.valueOf(ShoppingCartBasicValues.QUANTITY_BASIC);
             shoppingCart.getProducts().get(id).getProductName().sendKeys(quantityString);
         }
         return this;
     }
 
-    public ShoppingCartBL clickRefreshButton(short id){
+    public ShoppingCartBL clickRefreshButton(short id) {
         shoppingCart.getProducts().get(id).getProductQuantityRefreshButton().click();
         return this;
     }
-    public ShoppingCartBL clickRemoveButton(short id){
+
+    public ShoppingCartBL clickRemoveButton(short id) {
         shoppingCart.getProducts().get(id).getProductQuantityRemoveButton().click();
         return this;
     }
-    public ShoppingCartBL dropUseCouponButton(){
+
+    public ShoppingCartBL dropUseCouponButton() {
         shoppingCart.getUseCouponCodeDropButton().click();
         return this;
     }
 
-    public ShoppingCartBL fillCouponInput(String couponCode){
+    public ShoppingCartBL fillCouponInput(String couponCode) {
         shoppingCart.getCouponInput().sendKeys(couponCode);
         return this;
     }
 
-    public ShoppingCartBL clickApplyCouponButton(){
+    public ShoppingCartBL clickApplyCouponButton() {
         shoppingCart.getApplyCouponButton().click();
         return this;
     }
-    public ShoppingCartBL dropEstimateShippingAndTaxesButton(){
+
+    public ShoppingCartBL dropEstimateShippingAndTaxesButton() {
         shoppingCart.getEstimateShippingAndTaxesDropButton().click();
         return this;
     }
-    public ShoppingCartBL chooseCountry(String country){
+
+    public ShoppingCartBL chooseCountry(String country) {
         shoppingCart.getCountrySelect().selectByValue(country);
         return this;
     }
-    public ShoppingCartBL chooseRegionAndState(String country){
+
+    public ShoppingCartBL chooseRegionAndState(String country) {
         shoppingCart.getRegionAndStateSelect().selectByValue(country);
         return this;
     }
-    public ShoppingCartBL fillPostCodeInput(String postCode){
+
+    public ShoppingCartBL fillPostCodeInput(String postCode) {
         shoppingCart.getPostCodeInput().sendKeys(postCode);
         return this;
     }
-    public ShoppingCartBL clickGetQuotesButton(){
+
+    public ShoppingCartBL clickGetQuotesButton() {
         shoppingCart.getGetQuotesButton().click();
         return this;
     }
 
-    public ShoppingCartBL dropUseGiftCertificateDropButton(){
+    public ShoppingCartBL dropUseGiftCertificateDropButton() {
         shoppingCart.getUseGiftCertificateDropButton().click();
         return this;
     }
-    public ShoppingCartBL clickCheckoutButton(){
+
+    public ShoppingCartBL clickCheckoutButton() {
         shoppingCart.getCheckoutButton().click();
+        shoppingCart.waitForElement();
         return this;
     }
-    public ShoppingCartBL clickContinueShopping(){
+
+    public ShoppingCartBL clickContinueShopping() {
         shoppingCart.getContinueShoppingButton().click();
         return this;
     }
 
-    public ShoppingCartBL verifyTaxOnShoppingCart(String taxName){
+    public ShoppingCartBL verifyTaxOnShoppingCart(String taxName) {
         boolean isTax = false;
         Driver.waitUntilVisible(shoppingCart.getCheckoutPriceElementForVisible());
-        for(WebElement title:shoppingCart.getTaxTitles()){
+        for (WebElement title : shoppingCart.getTaxTitles()) {
             System.out.println(title.getText());
-           if(title.getText().contains(taxName)){
-               isTax = true;
-           }
+            if (title.getText().contains(taxName)) {
+                isTax = true;
+            }
         }
         Assert.assertTrue(isTax);
         return this;
-    public void verifyProductInCart(String product) {
-        Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
+
+        public void verifyProductInCart (String product){
+            Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
+        }
+        public ShoppingCartBL clickOnShoppingCartButton () {
+            shoppingCart.getShoppingCartButton().click();
+            return new ShoppingCartBL();
+        }
+        public ShoppingCartBL verifyAddToCart () {
+            Assert.assertTrue(shoppingCart.getShoppingCartText().getText().contains("Shopping Cart"));
+            return this;
+        }
     }
-    public ShoppingCartBL clickOnShoppingCartButton() {
-        shoppingCart.getShoppingCartButton().click();
-        return new ShoppingCartBL();
-    }
-      
 }
 
