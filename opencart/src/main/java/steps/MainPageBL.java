@@ -24,6 +24,50 @@ public class MainPageBL {
         return new MenuBL();
     }
 
+    public MainPageBL addOneProductToShoppingCart() {
+        addProductToCart("iPhone");
+        clickOnLinkToShoppingCart();
+        return new MainPageBL();
+    }
+
+    public MainPageBL addTwoProductsToShoppingCart() {
+        addProductToCart("iPhone");
+        addProductToCart("MacBook");
+        clickOnLinkToShoppingCart();
+        return new MainPageBL();
+    }
+    private void addProductToCart(String productName) {
+        ProductContainer product = mainPage.getProducts()
+                .stream()
+                .filter(e -> e.getProductTitle().getText().equals(productName))
+                .findFirst()
+                .orElseThrow(NullPointerException::new);
+        mainPage.waitForElement();
+        product.getAddToCartButton().click();
+    }
+
+    public MainPageBL addTwoProductsToCompare() {
+        addProductToComparePage("iPhone");
+        addProductToComparePage("MacBook");
+        clickOnProductComparison();
+        return new MainPageBL();
+    }
+
+    private void addProductToComparePage(String productName) {
+        ProductContainer product = mainPage.getProducts()
+                .stream()
+                .filter(e -> e.getProductTitle().getText().equals(productName))
+                .findFirst()
+                .orElseThrow(NullPointerException::new);
+        mainPage.waitForElement();
+        product.getAddToCompareButton().click();
+    }
+
+    private void clickOnProductComparison() {
+        mainPage.getSuccessfulMessageAlert();
+        mainPage.getProductComparison().click();
+    }
+
     public MainPageBL checkCurrencySymbolOnAllProducts(){
         String selectedCurrencyOnHomePage = new HeaderPageBL().getSelectedCurrencyLeftSymbol();
         for(WebElement price: mainPage.getPrice()){
@@ -37,50 +81,10 @@ public class MainPageBL {
         mainPage.getProductsAddToCart().get(RandomUtils.nextInt(1,quantityProducts)).click();
         return this;
     }
-    public MainPageBL clickOnLinkToShoppingCart() throws InterruptedException {
+    private MainPageBL clickOnLinkToShoppingCart() {
         Driver.waitBeClickable(mainPage.getSuccessfulAddProductLinkToShoppingCart());
         mainPage.getSuccessfulAddProductLinkToShoppingCart().click();
        // Thread.sleep(10000);
-        return this;
-    }
-
-    public MainPageBL addProductToCart(String productName) {
-        ProductContainer product = mainPage.getProducts()
-                .stream()
-                .filter(e -> e.getProductTitle().getText().equals(productName))
-                .findFirst()
-                .orElseThrow(NullPointerException::new);
-        mainPage.waitForElement();
-        product.getAddToCartButton().click();
-        return this;
-    }
-
-    public MainPageBL addProductToComparePage(String productName) {
-        ProductContainer product = mainPage.getProducts()
-                .stream()
-                .filter(e -> e.getProductTitle().getText().equals(productName))
-                .findFirst()
-                .orElseThrow(NullPointerException::new);
-        mainPage.waitForElement();
-        product.getAddToCompareButton().click();
-        return this;
-    }
-
-    public MainPageBL clickOnProductComparison() {
-        mainPage.waitForElement();
-        mainPage.getProductComparison().click();
-        return new MainPageBL();
-    }
-
-    public MainPageBL verifyAddToShoppingCart() {
-        mainPage.waitForElement();
-        Assert.assertTrue(mainPage.getSuccessfulMessage().getText().contains("Success: "));
-        return this;
-    }
-
-    public MainPageBL verifyAddToCompare() {
-        mainPage.waitForElement();
-        Assert.assertTrue(mainPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
 }

@@ -2,8 +2,10 @@ package basePackage;
 
 import navigation.Navigation;
 import org.testng.annotations.Test;
+import pages.ShoppingCart;
 import steps.MainPageBL;
 import steps.ProductPageBL;
+import steps.ShoppingCartBL;
 
 import static enums.Url.BASIC_URL;
 
@@ -13,18 +15,18 @@ public class AddToCartTests extends BaseTest {
     public void addProductToCart() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         new MainPageBL()
-                .addProductToCart("iPhone")
-                .verifyAddToShoppingCart();
+                .addOneProductToShoppingCart();
+        new ShoppingCartBL()
+                .verifyAddToCart();
     }
 
     @Test
     public void addTwoProductsToCart() {
         new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
         new MainPageBL()
-                .addProductToCart("iPhone")
-                .verifyAddToShoppingCart()
-                .addProductToCart("MacBook")
-                .verifyAddToShoppingCart();
+                .addTwoProductsToShoppingCart();
+        new ShoppingCartBL()
+                .verifyAddToCart();
     }
 
     @Test
@@ -35,13 +37,8 @@ public class AddToCartTests extends BaseTest {
                 .clickOnDesktopsButton()
                 .clickOnShowAllDesktopsButton();
         new ProductPageBL()
-                .addProductToCart("iPod Classic")
-                .verifyAddToShoppingCart()
-                .addProductToCart("HTC Touch HD")
-                .verifyAddToShoppingCart()
-                .addProductToCart("Sony VAIO")
-                .verifyAddToShoppingCart()
-                .addProductToCart("Palm Treo Pro")
-                .verifyAddToShoppingCart();
+                .addFourProductsToCart();
+        new ShoppingCartBL()
+                .verifyAddToCart();
     }
 }

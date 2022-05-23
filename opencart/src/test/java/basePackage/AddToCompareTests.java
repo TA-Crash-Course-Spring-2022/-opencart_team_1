@@ -2,6 +2,7 @@ package basePackage;
 
 import navigation.Navigation;
 import org.testng.annotations.Test;
+import steps.ComparePageBL;
 import steps.MainPageBL;
 import steps.ProductPageBL;
 
@@ -17,7 +18,20 @@ public class AddToCompareTests extends BaseTest {
                 .clickOnDesktopsButton()
                 .clickOnShowAllDesktopsButton();
         new ProductPageBL()
-                .addProductToComparePage("MacBook Air")
-                .verifyAddToComparePage();
+                .addOneProductToCompare();
+        new ComparePageBL()
+                .verifyAddToCompare();
+    }
+    @Test
+    public void addTwoProductsToComparePage() {
+        new Navigation().navigateToUrl(BASIC_URL.getUrlValue());
+        new MainPageBL()
+                .getMenuBL()
+                .clickOnDesktopsButton()
+                .clickOnShowAllDesktopsButton();
+        new ProductPageBL()
+                .addTwoProductsToCompare();
+        new ComparePageBL()
+                .verifyAddToCompare();
     }
 }

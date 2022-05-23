@@ -22,11 +22,11 @@ public class ChangePasswordTests extends BaseTest {
                 .clickOnRegisterButton()
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
                 .clickOnSuccessfulRegistrationContinueButton();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnChangeYourPassword();
         new ChangePasswordPageBL()
-                .changePassword(ChangePasswordRepository.getPositiveChangePassword())
-                .verifySuccessfulChangePassword();
+                .changePassword(ChangePasswordRepository.getPositiveChangePassword());
+        myAccountPageBL.verifySuccessfulChangePassword();
     }
 
     @Test
@@ -38,10 +38,10 @@ public class ChangePasswordTests extends BaseTest {
                 .clickOnRegisterButton()
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
                 .clickOnSuccessfulRegistrationContinueButton();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnChangeYourPassword();
         new ChangePasswordPageBL()
-                .changePassword(ChangePasswordRepository.getNegativeChangePassword())
-                .checkNegativeChangePassword();
+                .changePassword(ChangePasswordRepository.getNegativeChangePassword());
+        myAccountPageBL.checkNegativeChangePassword();
     }
 }

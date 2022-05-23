@@ -14,16 +14,19 @@ import java.util.concurrent.TimeUnit;
 @Getter
 public class ComparePage extends BasePage {
 
-    @FindBy(xpath = ".//table[@class= 'table table-bordered']")
-    private List <WebElement> products;
-
     @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
     private WebElement successfulMessage;
 
+    @FindBy(xpath = ".//table[@class= 'table table-bordered']")
+    private List <WebElement> products;
+
+    @FindBy(xpath = ".//*[@id= 'content']/h1")
+    private WebElement comparePageText;
+
     public void waitForElement() {
-        WebDriver driver = Driver.DRIVERS.get();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
     }
+
 
     public List<CompareContainer> getProducts() {
         List<CompareContainer> compareContainers = new ArrayList<>();

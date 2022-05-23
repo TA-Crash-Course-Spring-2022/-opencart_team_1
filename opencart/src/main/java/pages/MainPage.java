@@ -18,13 +18,13 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//p[@class='price']")
     private List<WebElement> price;
-  
+
     @FindBy(xpath = "//button[contains(@onclick,'cart.add')]")
     private List<WebElement> productsAddToCart;
 
     @FindBy(xpath = "//a[text()='shopping cart']")
     private WebElement successfulAddProductLinkToShoppingCart;
-  
+
     @FindBy(xpath = ".//*[contains(@class,'product-layout')]")
     private List<WebElement> products;
 
@@ -34,11 +34,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//*[@class = 'alert alert-success alert-dismissible']")
     private WebElement successfulMessage;
 
-    public void waitForElement() {
-        WebDriver driver = Driver.DRIVERS.get();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-    }
-
     public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();
         for (WebElement element : products) {
@@ -46,15 +41,13 @@ public class MainPage extends BasePage {
         }
         return productContainers;
     }
-  
-  public WebElement getAlert() {
-        wait.until(ExpectedConditions.visibilityOf(alert));
-        return alert;
+
+    public WebElement getSuccessfulMessageAlert() {
+        wait.until(ExpectedConditions.visibilityOf(successfulMessage));
+        return successfulMessage;
     }
-  public WebElement getComparisonAlert() {
-        wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
-        return comparisonAlert;
+    public void waitForElement() {
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
     }
-  
 }
 

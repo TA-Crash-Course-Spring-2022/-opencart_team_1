@@ -22,11 +22,11 @@ public class EditAccountTests extends BaseTest {
                 .clickOnLoginButton()
                 .loginPerson(LoginRepository.getLoginUser())
                 .verifySuccessfulLogin();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editFirstNameOnly(EditAccountRepository.getFirstNameEdit())
-                .verifySuccessfulEditInformation();
+                .editFirstNameOnly(EditAccountRepository.getFirstNameEdit());
+        myAccountPageBL.verifySuccessfulEditInformation();
     }
 
     @Test
@@ -38,11 +38,11 @@ public class EditAccountTests extends BaseTest {
                 .clickOnLoginButton()
                 .loginPerson(LoginRepository.getLoginUser())
                 .verifySuccessfulLogin();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editLastNameOnly(EditAccountRepository.getLastNameEdit())
-                .verifySuccessfulEditInformation();
+                .editLastNameOnly(EditAccountRepository.getLastNameEdit());
+        myAccountPageBL.verifySuccessfulEditInformation();
     }
 
     @Test
@@ -54,11 +54,11 @@ public class EditAccountTests extends BaseTest {
                 .clickOnLoginButton()
                 .loginPerson(LoginRepository.getLoginUser())
                 .verifySuccessfulLogin();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editTelephoneOnly(EditAccountRepository.getTelephoneEdit())
-                .verifySuccessfulEditInformation();
+                .editTelephoneOnly(EditAccountRepository.getTelephoneEdit());
+        myAccountPageBL.verifySuccessfulEditInformation();
     }
 
     @Test
@@ -70,11 +70,11 @@ public class EditAccountTests extends BaseTest {
                 .clickOnLoginButton()
                 .loginPerson(LoginRepository.getLoginUser())
                 .verifySuccessfulLogin();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editTelephoneOnly(EditAccountRepository.getInvalidTelephoneEdit())
-                .checkEditTelephoneInvalid();
+                .editTelephoneOnly(EditAccountRepository.getInvalidTelephoneEdit());
+        myAccountPageBL.checkEditTelephoneInvalid();
     }
 
     @Test
@@ -87,11 +87,11 @@ public class EditAccountTests extends BaseTest {
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
                 .verifyUserRegistration()
                 .clickOnSuccessfulRegistrationContinueButton();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editEmailOnly(EditAccountRepository.getEmailEdit())
-                .verifySuccessfulEditInformation();
+                .editEmailOnly(EditAccountRepository.getEmailEdit());
+        myAccountPageBL.verifySuccessfulEditInformation();
     }
 
     @Test
@@ -104,16 +104,15 @@ public class EditAccountTests extends BaseTest {
                 .registerNewPerson(RegisterRepository.getValidRegisterUser())
                 .verifyUserRegistration()
                 .clickOnSuccessfulRegistrationContinueButton();
-        new MyAccountPageBL()
+        MyAccountPageBL myAccountPageBL = new MyAccountPageBL()
                 .clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editInformation(EditAccountRepository.getValidEditAccount())
-                .verifySuccessfulEditInformation();
-        new MyAccountPageBL()
+                .editInformation(EditAccountRepository.getValidEditAccount());
+        myAccountPageBL.verifySuccessfulEditInformation()
                 .clickOnChangeYourPassword();
         new ChangePasswordPageBL()
-                .changePassword(ChangePasswordRepository.getPositiveChangePassword())
-                .verifySuccessfulChangePassword();
+                .changePassword(ChangePasswordRepository.getPositiveChangePassword());
+        myAccountPageBL.verifySuccessfulChangePassword();
     }
     @Test
     public void changeLastNameAndPasswordStory() {
@@ -138,11 +137,11 @@ public class EditAccountTests extends BaseTest {
                 .verifySuccessfulLogin();
         myAccountPageBL.clickOnEditYourAccountInformation();
         new EditAccountPageBL()
-                .editLastNameOnly(EditAccountRepository.getLastNameEdit())
-                .verifySuccessfulEditInformation();
-        myAccountPageBL.clickOnChangeYourPassword();
+                .editLastNameOnly(EditAccountRepository.getLastNameEdit());
+        myAccountPageBL.verifySuccessfulEditInformation()
+        .clickOnChangeYourPassword();
         new ChangePasswordPageBL()
-                .changePassword(ChangePasswordRepository.getPositiveChangePassword())
-                .verifySuccessfulChangePassword();
+                .changePassword(ChangePasswordRepository.getPositiveChangePassword());
+        myAccountPageBL.verifySuccessfulChangePassword();
     }
 }

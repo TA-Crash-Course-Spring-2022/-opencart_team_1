@@ -29,4 +29,9 @@ public class ComparePageBL {
         Assert.assertTrue(comparePage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
+
+    public ComparePageBL verifyAddToCompare() {
+        Assert.assertTrue(comparePage.getComparePageText().getText().contains("Product Comparison"));
+        return this;
+    }
 }
