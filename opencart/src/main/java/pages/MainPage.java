@@ -2,10 +2,15 @@ package pages;
 
 import driver.Driver;
 import lombok.Getter;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.containers.ProductContainer;
 
 @Getter
@@ -13,8 +18,7 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//p[@class='price']")
     private List<WebElement> price;
-
-   // @FindBy(xpath = "//span[text()='Add to Cart']")
+  
     @FindBy(xpath = "//button[contains(@onclick,'cart.add')]")
     private List<WebElement> productsAddToCart;
 
@@ -22,17 +26,6 @@ public class MainPage extends BasePage {
     private WebElement successfulAddProductLinkToShoppingCart;
   
     @FindBy(xpath = ".//*[contains(@class,'product-layout')]")
-    private List<WebElement> products;
-
-    @FindBy(xpath = "//div[contains(@class,'alert-')]")
-    private WebElement alert;
-
-    @FindBy(xpath = "//a[normalize-space()='product comparison']")
-    private WebElement comparisonAlert;
-    @FindBy(xpath = "//p[@class='price']")
-    private List<WebElement> price
-      
-    @FindBy(xpath = ".//*[contains(@class, 'product-layout')]")
     private List<WebElement> products;
 
     @FindBy(xpath = ".//*[text() = 'product comparison']")
@@ -45,8 +38,8 @@ public class MainPage extends BasePage {
         WebDriver driver = Driver.DRIVERS.get();
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
     }
-  
-  public List<ProductContainer> getProducts() {
+
+    public List<ProductContainer> getProducts() {
         List<ProductContainer> productContainers = new ArrayList<>();
         for (WebElement element : products) {
             productContainers.add(new ProductContainer(element));
@@ -62,6 +55,6 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
         return comparisonAlert;
     }
-
+  
 }
 

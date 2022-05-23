@@ -45,11 +45,4 @@ public class HeaderPage extends BasePage {
     @FindBy(xpath = "//*[@class='fa fa-search']")
     private WebElement searchButton;
 
-    public WebElement getSearchField() {
-        return searchField;
-    }
-    public WebElement getSearchButton() {
-        return searchButton;
-    }
-
 }

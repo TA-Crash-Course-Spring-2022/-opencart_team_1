@@ -20,7 +20,6 @@ public class ProductPageBL {
                 .orElseThrow(NullPointerException::new);
         productPage.waitForElement();
         product.getAddToCartButton().click();
-        productPage.waitForElement();
         return this;
     }
 
@@ -32,7 +31,6 @@ public class ProductPageBL {
                 .orElseThrow(NullPointerException::new);
         productPage.waitForElement();
         product.getAddToCompareButton().click();
-        productPage.waitForElement();
         return this;
     }
 
@@ -47,6 +45,12 @@ public class ProductPageBL {
     }
 
     public ProductPageBL verifyAddToShoppingCart() {
+        productPage.waitForElement();
+        Assert.assertTrue(productPage.getSuccessfulMessage().getText().contains("Success: "));
+        return this;
+    }
+
+    public ProductPageBL verifyAddToComparePage() {
         productPage.waitForElement();
         Assert.assertTrue(productPage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
