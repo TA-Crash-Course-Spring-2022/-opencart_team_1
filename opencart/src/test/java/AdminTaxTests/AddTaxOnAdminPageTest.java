@@ -11,7 +11,7 @@ import static enums.Url.BASIC_URL_NSTRAFER;
 
 public class AddTaxOnAdminPageTest extends BaseTest {
     @Test(priority = 1)
-    public void addAdminTaxRateTest() throws InterruptedException {
+    public void addAdminTaxRateTest() {
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -40,7 +40,7 @@ public class AddTaxOnAdminPageTest extends BaseTest {
                       .verifyTaxOnShoppingCart(newTaxName);
     }
     @Test(priority = 2)
-    public void editAdminRateTest() throws InterruptedException {
+    public void editAdminRateTest(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -52,13 +52,6 @@ public class AddTaxOnAdminPageTest extends BaseTest {
         new AdminAddTaxRateBL().clickSaveNewTaxRateButton()
                 .verifySuccessfulAddTaxRateMessage();
         new AdminTaxRatesPageBL().verifySuccessfulAddTaxRateOnPage(newTaxName);
-//        new AdminNavigationPageBL()
-//                .clickTaxClassesButton();
-//        new AdminTaxClassesPageBL()
-//                .editTaxableGoodsClass();
-//        new AdminEditTaxClassPageBL()
-//                .clickAddRuleButton()
-//                .setNewTaxRate(newTaxName);
         new Navigation()
                 .navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new MainPageBL()
@@ -69,7 +62,7 @@ public class AddTaxOnAdminPageTest extends BaseTest {
    }
 
     @Test(priority = 3)
-    public void deleteAdminRateTest() throws InterruptedException {
+    public void deleteAdminRateTest(){
         new Navigation().navigateToUrl(ADMIN_URL.getUrlValue());
         new AdminLoginPageBL()
                 .loginAdmin();
@@ -87,7 +80,6 @@ public class AddTaxOnAdminPageTest extends BaseTest {
         new AdminTaxClassesPageBL()
                 .editTaxableGoodsClass()
                 .clickRemoveRuleButton();
-        Thread.sleep(5000);
         adminNavigationPageBL
                 .navigateToTaxRatesPage();
         new AdminTaxRatesPageBL()

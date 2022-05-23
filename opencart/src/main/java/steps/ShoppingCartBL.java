@@ -92,13 +92,13 @@ public class ShoppingCartBL extends BasePage {
         boolean isTax = false;
         Driver.waitUntilVisible(shoppingCart.getCheckoutPriceElementForVisible());
         for(WebElement title:shoppingCart.getTaxTitles()){
-            System.out.println(title.getText());
            if(title.getText().contains(taxName)){
                isTax = true;
            }
         }
         Assert.assertTrue(isTax);
         return this;
+    }
     public void verifyProductInCart(String product) {
         Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
     }
@@ -106,6 +106,6 @@ public class ShoppingCartBL extends BasePage {
         shoppingCart.getShoppingCartButton().click();
         return new ShoppingCartBL();
     }
-      
+
 }
 

@@ -55,9 +55,9 @@ public class HeaderPageBL {
         return this;
     }
 
-    public String findCurrencyByName(){
+    public String findCurrencyByName() {
         return headerPage.getCurrencyDropDownUl().get(1).getAttribute("name");
-
+    }
     public String getSelectedCurrencyLeftSymbol(){
         return headerPage.getCurrencySymbolOnHomePage().getText().toLowerCase();
 

@@ -47,14 +47,14 @@ public class MainPage extends BasePage {
         return productContainers;
     }
   
-  public WebElement getAlert() {
-        wait.until(ExpectedConditions.visibilityOf(alert));
-        return alert;
-    }
-  public WebElement getComparisonAlert() {
-        wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
-        return comparisonAlert;
-    }
+//  public WebElement getAlert() {
+//        wait.until(ExpectedConditions.visibilityOf(alert));
+//        return alert;
+//    }
+//  public WebElement getComparisonAlert() {
+//        wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
+//        return comparisonAlert;
+//    }
   
 }
 

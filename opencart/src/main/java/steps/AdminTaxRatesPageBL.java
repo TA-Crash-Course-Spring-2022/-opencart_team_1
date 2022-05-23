@@ -109,14 +109,12 @@ public class AdminTaxRatesPageBL {
         Assert.assertTrue(taxRateIsAdd);
         return this;
     }
-    public AdminTaxRatesPageBL deleteTaxRateByName(String name) throws InterruptedException {
-        System.out.println(name);
+    public AdminTaxRatesPageBL deleteTaxRateByName(String name){
         for(TaxRateContainer tax: adminTaxRatesPage.getTaxes()){
            if(tax.getTaxNameText().getText().contains(name)){
                tax.getTaxCheckbox().click();
            }
         }
-        Thread.sleep(5000);
         return this;
     }
 }
