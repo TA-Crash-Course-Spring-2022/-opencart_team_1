@@ -87,6 +87,7 @@ public class ShoppingCartBL extends BasePage {
         shoppingCart.getContinueShoppingButton().click();
         return this;
     }
+
     public ShoppingCartBL verifyTaxOnShoppingCart(String taxName){
         boolean isTax = false;
         Driver.waitUntilVisible(shoppingCart.getCheckoutPriceElementForVisible());
@@ -98,5 +99,13 @@ public class ShoppingCartBL extends BasePage {
         }
         Assert.assertTrue(isTax);
         return this;
+    public void verifyProductInCart(String product) {
+        Assert.assertTrue(shoppingCart.getProductInCart(product).getText().contains(product), "The product isn`t added to the wish list");
     }
+    public ShoppingCartBL clickOnShoppingCartButton() {
+        shoppingCart.getShoppingCartButton().click();
+        return new ShoppingCartBL();
+    }
+      
 }
+

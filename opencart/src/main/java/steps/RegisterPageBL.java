@@ -10,7 +10,6 @@ import utils.DriverUtils;
 public class RegisterPageBL {
     private RegisterPage registerPage;
     private SuccessfulRegisterPage successfulRegisterPage;
-    private MyAccountPage myAccountPage;
 
     public RegisterPageBL() {
         registerPage = new RegisterPage();
@@ -71,7 +70,7 @@ public class RegisterPageBL {
 
     public RegisterPageBL clickOnSuccessfulRegistrationContinueButton() {
         successfulRegisterPage.getSuccessfulRegistrationContinueButton().click();
-        return this;
+        return new RegisterPageBL();
     }
 
     public RegisterPageBL verifyUserRegistration() {

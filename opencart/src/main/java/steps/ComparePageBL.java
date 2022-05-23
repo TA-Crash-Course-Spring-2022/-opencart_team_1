@@ -1,5 +1,6 @@
 package steps;
 
+import org.testng.Assert;
 import pages.ComparePage;
 import pages.containers.CompareContainer;
 
@@ -17,7 +18,15 @@ public class ComparePageBL {
                 .filter(e -> e.getProductTitle().getText().equals(productName))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
+        comparePage.waitForElement();
         products.getAddToCartButton().click();
+        comparePage.waitForElement();
+        return this;
+    }
+
+    public ComparePageBL verifyAddToShoppingCart() {
+        comparePage.waitForElement();
+        Assert.assertTrue(comparePage.getSuccessfulMessage().getText().contains("Success: "));
         return this;
     }
 }

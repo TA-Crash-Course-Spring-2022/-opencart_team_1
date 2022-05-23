@@ -38,7 +38,18 @@ public class HeaderPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='btn-group open']//li")
     private List<WebElement> currencies;
+  
+    @FindBy(xpath = "//*[@name = 'search']")
+    private WebElement searchField;
 
+    @FindBy(xpath = "//*[@class='fa fa-search']")
+    private WebElement searchButton;
 
+    public WebElement getSearchField() {
+        return searchField;
+    }
+    public WebElement getSearchButton() {
+        return searchButton;
+    }
 
 }

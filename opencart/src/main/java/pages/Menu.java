@@ -9,65 +9,65 @@ import org.openqa.selenium.support.FindBy;
 public class Menu extends BasePage {
 
     @FindBy(xpath = ".//*[text()= 'Desktops']")
-    private WebElement desktops;
+    private WebElement desktopsButton;
 
     @FindBy(xpath = ".//*[text()= 'PC (0)']")
-    private WebElement desktopsPC;
+    private WebElement desktopsPCButton;
 
     @FindBy(xpath = ".//*[text()= 'Mac (1)']")
-    private WebElement desktopsMac;
+    private WebElement desktopsMacButton;
 
     @FindBy(xpath = ".//*[text()= 'Show All Desktops']")
-    private WebElement allDesktops;
+    private WebElement allDesktopsButton;
 
     @FindBy(xpath = ".//*[text()= 'Laptops & Notebooks']")
-    private WebElement laptopsAndNotebooks;
+    private WebElement laptopsAndNotebooksButton;
 
     @FindBy(xpath = ".//*[text()= 'Macs (0)']")
-    private WebElement laptopsAndNotebooksMacs;
+    private WebElement laptopsAndNotebooksMacsButton;
 
     @FindBy(xpath = ".//*[text()= 'Windows (0)']")
-    private WebElement laptopsAndNotebooksWindows;
+    private WebElement laptopsAndNotebooksWindowsButton;
 
     @FindBy(xpath = ".//*[text()= 'Show All Laptops & Notebooks']")
-    private WebElement allLaptopsAndNotebooks;
+    private WebElement allLaptopsAndNotebooksButton;
 
     @FindBy(xpath = ".//*[text()= 'Components']")
-    private WebElement components;
+    private WebElement componentsButton;
 
     @FindBy(xpath = ".//*[text()= 'Mice and Trackballs (0)']")
-    private WebElement miceAndTrackballs;
+    private WebElement miceAndTrackballsButton;
 
     @FindBy(xpath = ".//*[text()= 'Monitors (2)']")
-    private WebElement monitors;
+    private WebElement monitorsButton;
 
     @FindBy(xpath = ".//*[text()= 'Printers (0)']")
-    private WebElement printers;
+    private WebElement printersButton;
 
     @FindBy(xpath = ".//*[text()= 'Scanners (0)']")
-    private WebElement scanners;
+    private WebElement scannersButton;
 
     @FindBy(xpath = ".//*[text()= 'Web Cameras (0)']")
-    private WebElement webCameras;
+    private WebElement webCamerasButton;
 
     @FindBy(xpath = ".//*[text()= 'Show All Components']")
-    private WebElement allComponents;
+    private WebElement allComponentsButton;
 
     @FindBy(xpath = ".//*[text()= 'Tablets']")
-    private WebElement tablets;
+    private WebElement tabletsButton;
 
     @FindBy(xpath = ".//*[text()= 'Software']")
-    private WebElement software;
+    private WebElement softwareButton;
 
     @FindBy(xpath = ".//*[text()= 'Phones & PDAs']")
-    private WebElement phonesAndPDAs;
+    private WebElement phonesAndPDAsButton;
 
     @FindBy(xpath = ".//*[text()= 'Cameras']")
-    private WebElement cameras;
+    private WebElement camerasButton;
 
     @FindBy(xpath = ".//*[text()= 'MP3 Players']")
-    private WebElement mp3Players;
+    private WebElement mp3PlayersButton;
 
     @FindBy(xpath = ".//*[text()= 'Show All MP3 Players']")
-    private WebElement allMp3Players;
+    private WebElement allMp3PlayersButton;
 }
