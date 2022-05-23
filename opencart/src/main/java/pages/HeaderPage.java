@@ -21,7 +21,7 @@ public class HeaderPage extends BasePage {
     @FindBy(id = "wishlist-total")
     private WebElement wishListButton;
 
-    @FindBy(xpath = ".//*[@title= 'Shopping Cart']")
+    @FindBy(xpath = "//a[@title= 'Shopping Cart']")
     private WebElement shoppingCartButton;
 
     @FindBy(xpath = ".//*[@title= 'Checkout']")

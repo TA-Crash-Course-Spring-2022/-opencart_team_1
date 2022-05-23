@@ -107,7 +107,6 @@ public class AdminCurrencyPageBL {
     public void verifySuccessfulModifiedOnHomePage(String newTitle){
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
         new HeaderPageBL().dropCurrencyDropButton();
-       // Assert.assertEquals(new HeaderPageBL().findCurrencyByName(),newTitle );
     }
     public AdminCurrencyPageBL editLastAddedCurrency(){
         adminCurrencyPageBL.getSortByLastUpdatedButton().click();

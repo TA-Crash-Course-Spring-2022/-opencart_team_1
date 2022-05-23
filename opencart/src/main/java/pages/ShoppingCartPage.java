@@ -1,10 +1,12 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+@Getter
 public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/div/div/h1")
     private WebElement ShoppingCartHeaderText;
@@ -81,101 +83,5 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//a[text()= 'Continue Shopping']")
     private WebElement continueShoppingButton;
 
-
-    public WebElement getProductImage(short id) {
-        return productImage.get(id);
-    }
-
-    public WebElement getProductModelName(short id) {
-        return productModelName.get(id);
-    }
-
-    public WebElement getProductNameLink(short id) {
-        return productNameLink.get(id);
-    }
-
-    public WebElement getQuantityInputForm(short id) {
-        return quantityInputForm.get(id);
-    }
-
-    public WebElement getQuantityRefreshButton(short id) {
-        return quantityRefreshButton.get(id);
-    }
-
-    public WebElement getQuantityRemoveButton(short id) {
-        return quantityRemoveButton.get(id);
-    }
-
-    public WebElement getTotalPriceText(short id) {
-        return totalPriceText.get(id);
-    }
-
-    public WebElement getShoppingCartHeaderText() {
-        return ShoppingCartHeaderText;
-    }
-
-    public WebElement getUseCouponDropButton() {
-        return useCouponDropButton;
-    }
-
-    public WebElement getInputCoupon() {
-        return inputCoupon;
-    }
-
-    public WebElement getApplyCouponButton() {
-        return applyCouponButton;
-    }
-
-    public WebElement getEstimateShippingAndTaxesDropButton() {
-        return estimateShippingAndTaxesDropButton;
-    }
-
-    public WebElement getCountrySelect() {
-        return countrySelect;
-    }
-
-    public WebElement getRegionAndStateSelect() {
-        return regionAndStateSelect;
-    }
-
-    public WebElement getPostCodeInput() {
-        return postCodeInput;
-    }
-
-    public WebElement getGetQuotesButton() {
-        return getQuotesButton;
-    }
-
-    public WebElement getUseGiftCertificateDropButton() {
-        return useGiftCertificateDropButton;
-    }
-
-    public WebElement getGiftCertificationInput() {
-        return giftCertificationInput;
-    }
-
-    public WebElement getSubTotal() {
-        return subTotal;
-    }
-
-    public WebElement getExoTax() {
-        return exoTax;
-    }
-
-    public WebElement getVat() {
-        return vat;
-    }
-
-    public WebElement getTotalPrice() {
-        return totalPrice;
-    }
-
-    public WebElement getCheckoutButton() {
-        return checkoutButton;
-    }
-
-    public WebElement getContinueShoppingButton() {
-        return continueShoppingButton;
-    }
 
 }

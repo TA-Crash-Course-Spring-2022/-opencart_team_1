@@ -11,61 +11,64 @@ public class AdminNavigationPageBL {
     public AdminNavigationPageBL() {
         adminNavigationPageBL = new AdminNavigationPage();
     }
-    public AdminNavigationPageBL navigateToTaxRatePage(){
+
+    public AdminNavigationPageBL navigateToTaxRatePage() {
         dropSettingsButton();
         dropLocalizationButton();
         dropTaxesDropButton();
         clickTaxRatesButton();
         return this;
     }
-    public AdminNavigationPageBL navigateToTaxClassesPage(){
-        dropSettingsButton();
-        dropLocalizationButton();
-        dropTaxesDropButton();
-        clickTaxClassesButton();
+
+    public AdminNavigationPageBL navigateToTaxRatesPage() {
+        clickTaxRatesButton();
         return this;
     }
-    public AdminNavigationPageBL navigateToCurrenciesPage(){
+
+    public AdminNavigationPageBL navigateToCurrenciesPage() {
         dropSettingsButton();
         dropLocalizationButton();
         clickCurrenciesButton();
         return this;
     }
 
-    public AdminNavigationPageBL dropSettingsButton(){
+    public AdminNavigationPageBL dropSettingsButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getSettingsDropButton());
-        adminNavigationPageBL.getSettingsDropButton().click();
+            adminNavigationPageBL.getSettingsDropButton().click();
         return this;
     }
 
-    public AdminNavigationPageBL dropLocalizationButton(){
+    public AdminNavigationPageBL dropLocalizationButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getLocalizationDropButton());
         adminNavigationPageBL.getLocalizationDropButton().click();
         return this;
     }
 
-    public AdminNavigationPageBL clickCurrenciesButton(){
+    public AdminNavigationPageBL clickCurrenciesButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getCurrenciesButton());
         adminNavigationPageBL.getCurrenciesButton().click();
         return this;
     }
 
-    public AdminNavigationPageBL dropTaxesDropButton(){
+    public AdminNavigationPageBL dropTaxesDropButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getTaxesDropButton());
         adminNavigationPageBL.getTaxesDropButton().click();
         return this;
     }
-    public AdminNavigationPageBL clickTaxRatesButton(){
+
+    public AdminNavigationPageBL clickTaxRatesButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getTaxRatesButton());
         adminNavigationPageBL.getTaxRatesButton().click();
         return this;
     }
-    public AdminNavigationPageBL clickTaxClassesButton(){
+
+    public AdminNavigationPageBL clickTaxClassesButton() {
         Driver.waitBeClickable(adminNavigationPageBL.getTaxClassesButton());
         adminNavigationPageBL.getTaxClassesButton().click();
         return this;
     }
-    public AdminNavigationPageBL navigateToProductCatalog(){
+
+    public AdminNavigationPageBL navigateToProductCatalog() {
         Driver.waitBeClickable(adminNavigationPageBL.getCatalogDropButton());
         adminNavigationPageBL.getCatalogDropButton().click();
         Driver.waitBeClickable(adminNavigationPageBL.getProductsButton());

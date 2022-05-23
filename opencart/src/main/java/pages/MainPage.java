@@ -16,11 +16,17 @@ import pages.containers.ProductContainer;
 @Getter
 public class MainPage extends BasePage {
 
-    @FindBy(xpath = ".//*[contains(@class,'product-layout')]")
-    private List<WebElement> products;
-
     @FindBy(xpath = "//p[@class='price']")
     private List<WebElement> price;
+  
+    @FindBy(xpath = "//button[contains(@onclick,'cart.add')]")
+    private List<WebElement> productsAddToCart;
+
+    @FindBy(xpath = "//a[text()='shopping cart']")
+    private WebElement successfulAddProductLinkToShoppingCart;
+  
+    @FindBy(xpath = ".//*[contains(@class,'product-layout')]")
+    private List<WebElement> products;
 
     @FindBy(xpath = ".//*[text() = 'product comparison']")
     private WebElement productComparison;
@@ -40,5 +46,15 @@ public class MainPage extends BasePage {
         }
         return productContainers;
     }
+  
+  public WebElement getAlert() {
+        wait.until(ExpectedConditions.visibilityOf(alert));
+        return alert;
+    }
+  public WebElement getComparisonAlert() {
+        wait.until(ExpectedConditions.visibilityOf(comparisonAlert));
+        return comparisonAlert;
+    }
+  
 }
 

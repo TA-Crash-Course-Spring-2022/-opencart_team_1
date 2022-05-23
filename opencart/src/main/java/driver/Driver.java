@@ -55,4 +55,9 @@ public class Driver {
         wait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().dismiss();
     }
+    public static void waitUntilVisible(WebElement element){
+        WebDriverWait wait = new WebDriverWait(webDriver,10);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
 }

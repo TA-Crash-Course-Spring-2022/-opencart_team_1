@@ -41,14 +41,14 @@ public class AdminTaxRatesPage extends BasePage {
 
     @FindBy(xpath = "//thead//td[7]/a")
     private WebElement taxCheckbox;
-    @FindBy(xpath = ".//table[@class = 'table table-bordered table-hover']")
-    private List<WebElement> taxes;
+    @FindBy(xpath = ".//tbody/tr")
+    private List<WebElement> taxesTbody;
 
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     private WebElement successfulAddTaxRateMessage;
 
     public List<TaxRateContainer> getTaxes() {
-        return taxes.stream().map(TaxRateContainer::new).collect(Collectors.toList());
+        return taxesTbody.stream().map(TaxRateContainer::new).collect(Collectors.toList());
     }
 
 }

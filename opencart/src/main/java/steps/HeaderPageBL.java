@@ -1,5 +1,6 @@
 package steps;
 
+import driver.Driver;
 import org.apache.commons.lang3.RandomUtils;
 import org.testng.Assert;
 import pages.HeaderPage;
@@ -70,6 +71,11 @@ public class HeaderPageBL {
             }
         }
         return count;
+    }
+    public ShoppingCartBL clickOnShoppingCartButton(){
+        Driver.waitBeClickable(headerPage.getShoppingCartButton());
+        headerPage.getShoppingCartButton().click();
+        return new ShoppingCartBL();
     }
 
     public void verifyCurrencyWasChangedOnHeaderPAge(int id) {

@@ -1,6 +1,7 @@
 package steps;
 
 import pages.AdminTaxClassesPage;
+import pages.containers.TaxClassContainer;
 
 public class AdminTaxClassesPageBL {
     private AdminTaxClassesPage adminTaxClassesPage;
@@ -29,12 +30,15 @@ public class AdminTaxClassesPageBL {
         }
         return this;
     }
-    public AdminTaxClassesPageBL clickEditTaxClass(short id){
-        adminTaxClassesPage.getTaxes().get(id).getTaxClassEditButton().click();
-        return this;
+
+    public AdminEditTaxClassPageBL editTaxableGoodsClass(){
+        for(TaxClassContainer taxClass: adminTaxClassesPage.getTaxes()){
+            if(taxClass.getTaxClassTitle().getText().contains("Taxable Goods")){
+                taxClass.getTaxClassEditButton().click();
+                break;
+            }
+        }
+        return new AdminEditTaxClassPageBL();
     }
-    public AdminTaxClassesPageBL editTaxableGoodsClass(){
-        adminTaxClassesPage.getTaxes().get(1).getTaxClassEditButton().click();
-        return this;
-    }
+
 }

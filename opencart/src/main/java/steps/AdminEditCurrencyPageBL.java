@@ -17,7 +17,6 @@ import static enums.Url.BASIC_URL_NSTRAFER;
 public class AdminEditCurrencyPageBL {
     private AdminEditCurrencyPage adminEditCurrencyPage;
 
-    private String currencyNewTitle;
     public AdminEditCurrencyPageBL() {
         adminEditCurrencyPage = new AdminEditCurrencyPage();
     }
@@ -35,10 +34,8 @@ public class AdminEditCurrencyPageBL {
         editCurrency(EditCurrencyModelRepository.getPositiveCurrencyModel());
         selectCurrencyStatus();
         String newCurrencyTitle = adminEditCurrencyPage.getCodeInput().getAttribute("value");
-//        Thread.sleep(20000);
         clickSaveCurrency();
         new Navigation().navigateToUrl(BASIC_URL_NSTRAFER.getUrlValue());
-        String currencyCodeOnHomePage;
         Assert.assertTrue(new HeaderPageBL().dropCurrencyDropButton().checkNewCurrency(newCurrencyTitle));
         return this;
     }
@@ -82,7 +79,5 @@ public class AdminEditCurrencyPageBL {
     public String getCodeInputValue(){
         return adminEditCurrencyPage.getCodeInput().getAttribute("value");
     }
-//    public String getCurrencyTitle(){
-//        return newCurrencyTitle;
-//    }
+
 }
